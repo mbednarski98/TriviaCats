@@ -6,7 +6,7 @@ public class Questions {
 	private ArrayList<Question> results;
 	
 	public int getNumberOfQuestions() {
-		return results.size();
+		return this.results.size();
 	}
 	
 	public Question getQuestion(int index) {
