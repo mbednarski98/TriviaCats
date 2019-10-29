@@ -16,16 +16,16 @@ public class TriviaAggregator {
 	private Gson gson = new Gson();
 	
 	public Questions getNewQuestions(int numberOfQuestions) {
-		String response = performGETRequest("https://opentdb.com/api.php?amount=" + String.valueOf(numberOfQuestions));
+		String response = this.performGETRequest("https://opentdb.com/api.php?amount=" + String.valueOf(numberOfQuestions));
 		return gson.fromJson(response, Questions.class);
 	}
 	
 	public Categories getCategoryList() {
-		String response = performGETRequest("https://opentdb.com/api_category.php");
+		String response = this.performGETRequest("https://opentdb.com/api_category.php");
 		return gson.fromJson(response, Categories.class);
 	}
 	
-	public String performGETRequest(String requestURL) {
+	private String performGETRequest(String requestURL) {
 		try {
 			URL url = new URL(requestURL);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
