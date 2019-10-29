@@ -9,17 +9,20 @@ import java.net.URL;
 
 import com.google.gson.*;
 
-import TriviaObjects.Categories;
+import TriviaObjects.*;
 
 public class TriviaAggregator {
 
+	private Gson gson = new Gson();
+	
+	public Questions getQuestions(int numberOfQuestions) {
+		String response = performGETRequest("https://opentdb.com/api.php?amount=" + String.valueOf(numberOfQuestions));
+		return gson.fromJson(response, Questions.class);
+	}
+	
 	public Categories getCategories() {
 		String response = performGETRequest("https://opentdb.com/api_category.php");
-		Gson gson = new Gson();
-		
-		Categories categories = gson.fromJson(response, Categories.class);
-		
-		return categories;
+		return gson.fromJson(response, Categories.class);
 	}
 	
 	public String performGETRequest(String requestURL) {
