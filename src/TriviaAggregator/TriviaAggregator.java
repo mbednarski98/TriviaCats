@@ -15,12 +15,12 @@ public class TriviaAggregator {
 
 	private Gson gson = new Gson();
 	
-	public Questions getQuestions(int numberOfQuestions) {
+	public Questions getNewQuestions(int numberOfQuestions) {
 		String response = performGETRequest("https://opentdb.com/api.php?amount=" + String.valueOf(numberOfQuestions));
 		return gson.fromJson(response, Questions.class);
 	}
 	
-	public Categories getCategories() {
+	public Categories getCategoryList() {
 		String response = performGETRequest("https://opentdb.com/api_category.php");
 		return gson.fromJson(response, Categories.class);
 	}
