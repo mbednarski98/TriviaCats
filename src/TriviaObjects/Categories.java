@@ -2,8 +2,8 @@ package TriviaObjects;
 
 import java.util.ArrayList;
 
-// This object holds a list of Category objects. It is used in the same way as an ArrayList,
-// as it is essentially a case-specific wrapper for ArrayList.
+/* This object holds a list of Category objects. It is used in the same way as an ArrayList,
+   as it is essentially a case-specific wrapper for ArrayList. */
 public class Categories {
 	private ArrayList<Category> trivia_categories;
 	
