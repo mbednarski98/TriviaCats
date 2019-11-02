@@ -19,7 +19,8 @@ public class TriviaAggregator {
 	// Get new set of questions. Takes in number of questions, gives you a Questions object containing that many elements.
 	// TODO add/implement more input parameters (difficulty, category)
 	public Questions getNewQuestions(int numberOfQuestions) {
-		String response = this.performGETRequest("https://opentdb.com/api.php?amount=" + String.valueOf(numberOfQuestions));
+		String response = this.performGETRequest("https://opentdb.com/api.php?amount=" 
+				+ String.valueOf(numberOfQuestions));
 		return gson.fromJson(response, Questions.class);
 	}
 	
@@ -29,7 +30,8 @@ public class TriviaAggregator {
 		return gson.fromJson(response, Categories.class);
 	}
 	
-	// Performs a basic GET request. Takes in a URL on which to perform the request, returns the response of the request.
+	// Performs a basic GET request. Takes in a URL on which to perform the request, 
+	// returns the response of the request.
 	// TODO (see inside of method)
 	private String performGETRequest(String requestURL) {
 		try {
