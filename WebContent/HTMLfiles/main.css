@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+main {
+    display: block;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+    background: white;
+/*    border: 2px solid navy;*/
+}
+form{
+    width: 225px;
+    float: left;
+    margin: 0 auto;
+    padding: 1em;
+    background: white;
+    border: 2px solid navy;
+}
+#cat2, #cat3{
+    clear:left;
+}
+#question div{
+   width: 225px;
+    float: left;
+    margin: 0 auto;
+    padding: 1em;
+    background: white;
+    
+}
+div.ans{
+    width:100px;
+    height: 40px;
+    margin: 10px;
+    color:chocolate;
+    float:left;
+    
+}
+div.ans p{
+    font-size: 12px;
+}
+
+h1,h2 {
+    text-align: center;
+    margin-top: 0;
+    color: navy;
+}
+h2{
+    text-align: center;
+}
+
+label {
+    width: 10em;
+    float: left;
+    padding-right: 1em;
+    padding-bottom: .5em;
+}
+input {
+    float: left;
+    width: 15em;
+    margin-bottom: .5em;
+}
+span {
+    padding-left: .25em;
+}
+input {
+    margin-bottom: .5em;
+}
+br {
+    clear: left;
+}
