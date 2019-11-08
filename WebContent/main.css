@@ -1,0 +1,62 @@
+@charset "ISO-8859-1";
+main {
+	background:green;
+	height: 506px;
+	padding: .5em;
+}
+element {
+	font-size: 12px;
+}
+body {
+ min-height:640px;
+ background:#eee;
+ background:blue;
+ color:#000;
+ font-size:12px;
+ margin:0
+}
+.gameLobby-DeactivatedandSavedforpossiblefutureuse {
+ background:#fff;
+ background: red;
+ border-radius:.25em;
+ /*width:575px;
+ height:175px;*/)
+ float:left;
+ border:1px solid #ccc;
+ margin:4px;
+ padding:.5em 1.5%;
+}
+form{
+	background:#fff;
+	background:red;
+	width: 45%;
+	margin: 1em;
+	float:left;
+}
+#question{
+	display:block;
+	width: 90%;
+	padding: 2em;
+}
+button{
+	width: 24%;
+}
+span{
+	padding:.5em;
+}
+.cat{
+	width: 50%;
+	height: 50%;
+}
+
+#gameDetail {
+ overflow:hidden
+}
+
+input {
+	float: right;
+}
+h1,h2,h3,h4,span {
+ margin:0 0 .25em
+}
+	
