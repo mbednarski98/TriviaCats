@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cat Trivia - Home</title>
+<title>Trivia Cat LogIn</title>
  <link rel="stylesheet" type="text/css" href="main8.css">
 </head>
 
@@ -12,7 +12,7 @@
 	<div id="wrapper">
 
 		<header>	
-			<img src = "./Images/colorCrazyCat.jpg">
+			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\crazyCat.jpg">
 		    <h1>Cat Trivia</h1>
 		</header>
     
@@ -29,16 +29,18 @@
 		</ul>
 	</nav>
 
-	
-	<main id= "home">
-		<div id="welcome">
-		<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\coolCat.jpg">
-		<h1>Sign up now!</h1>
-		<h2><img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\goldfish.jpg">30 Free Goldfish! </h2>
-		
-		</div>
+<main>
+
+	<form class="login">
+			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\colorCrazyCat.jpg"><br>
+		<h1>Trivia Cats</h1>
+         <label for="userid">User id:</label><input type="text" required name="userid"><br>
+         <label for = "password">Password:</label><input type="text" required name="password"><br>
+          
+         <input  type="submit" value="Login">
+         <input  type="submit" value="Register">
+       </form><!-- login -->
 	</main>
-	
 </div><!-- wrapper -->
 </body>
 </html>

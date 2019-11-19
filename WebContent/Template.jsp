@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cat Trivia - Home</title>
- <link rel="stylesheet" type="text/css" href="main8.css">
+<title>Trivia Cats</title>
+ <link rel="stylesheet" type="text/css" href="main7.css">
 </head>
 
  <body>
 	<div id="wrapper">
 
 		<header>	
-			<img src = "./Images/colorCrazyCat.jpg">
+			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\crazyCat.jpg">
 		    <h1>Cat Trivia</h1>
 		</header>
     
@@ -29,16 +29,10 @@
 		</ul>
 	</nav>
 
-	
-	<main id= "home">
-		<div id="welcome">
-		<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\coolCat.jpg">
-		<h1>Sign up now!</h1>
-		<h2><img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\goldfish.jpg">30 Free Goldfish! </h2>
-		
-		</div>
-	</main>
-	
-</div><!-- wrapper -->
+<main>
+	<h1>Main Content Here</h1>
+
+</main>
+	</div><!-- end "wrapper" -->
 </body>
 </html>
