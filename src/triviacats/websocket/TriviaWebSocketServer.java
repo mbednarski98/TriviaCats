@@ -13,17 +13,18 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-@ApplicationScoped
 @ServerEndpoint("/trivia/{roomnumber}")
 public class TriviaWebSocketServer {	
 	
 	// The GameHandler instance used by websocket
 	@Inject
-	private GameHandler gameHandler = new GameHandler();
+	private GameHandler gameHandler;
 	
 	// actions to be performs on the connection of a new websocket client
 	@OnOpen
 	public void onOpen(Session session, @PathParam("roomnumber") final String roomNumber) {
+		System.out.println("newuser: " + session.getId());
+		System.out.println(gameHandler.toString());
 		int rn = -1;
 		try {
 			rn = Integer.parseInt(roomNumber);
@@ -61,9 +62,8 @@ public class TriviaWebSocketServer {
 	// actions to be performed when a message is recieved from a client
 	@OnMessage
 	public void onMessage(String message, Session session) {
-		//int roomNumber = gameHandler.findPlayer(session.getId());
+		// int roomNumber = gameHandler.findPlayer(session.getId());
 		
-		System.out.println(gameHandler.findPlayer(session.getId()) +":"+ session.getId() + ":" + message);
 	}
 	
 	// actions to be performed when a websocket error occurs.

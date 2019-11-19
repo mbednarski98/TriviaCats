@@ -41,6 +41,10 @@ public class Game {
 		return false;
 	}
 	
+	public ArrayList<Player> getPlayerList() {
+		return this.players;
+	}
+	
 	// takes in a session id, returns true if a player in this game has it, returns false otherwise
 	public boolean playerExists(String sessionID) {
 		for (Player p : players) {

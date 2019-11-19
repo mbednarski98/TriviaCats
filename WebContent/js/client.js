@@ -36,7 +36,10 @@ class WebSocketClient {
 			}
 			 
 			this.webSocket.onmessage = function(event) {
-				
+				console.debug(event.data);
+				document.getElementById("chatText").innerHTML += "<br>" + event.data
+				var objDiv = document.getElementById("chatBox");
+				objDiv.scrollTop = objDiv.scrollHeight;
 			}
 			 
 			this.webSocket.onerror = function(event) {
