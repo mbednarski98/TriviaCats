@@ -1,5 +1,9 @@
 package triviacats.websocket;
 
+import java.io.IOException;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -8,11 +12,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import java.io.IOException;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 @ApplicationScoped
 @ServerEndpoint("/trivia/{roomnumber}")
