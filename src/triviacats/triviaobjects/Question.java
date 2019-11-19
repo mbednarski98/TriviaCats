@@ -1,6 +1,4 @@
-package TriviaObjects;
-
-import java.util.ArrayList;
+package triviacats.triviaobjects;
 
 // This Object holds all the information needed to ask a question.
 public class Question {

@@ -1,4 +1,4 @@
-package TriviaAggregator;
+package triviacats.triviaaggregator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.net.URL;
 
 import com.google.gson.*;
 
-import TriviaObjects.*;
+import triviacats.triviaobjects.*;
 
 public class TriviaAggregator {
 

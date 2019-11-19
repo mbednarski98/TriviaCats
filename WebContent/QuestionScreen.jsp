@@ -4,16 +4,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cat Trivia - Play Game</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+<title>Trivia Cats</title>
+ <link rel="stylesheet" type="text/css" href="main8.css">
 </head>
-<body>
-    <main>
-      <!-- Dynamically code GameScore -->
-        <div class = "GameScore">
-        	<span><strong>Leading - FireCat: 5 correct.</strong></span>   <span>CupCat:  4 correct </span> <span>MadCat: 3 correct</span> <span>HalloweenCat: 2 correct</span>
-        </div>
 
+ <body>
+	<div id="wrapper">
+
+		<header>	
+			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\crazyCat.jpg">
+		    <h1>Cat Trivia</h1>
+		</header>
+    
+<main id="game">
+	 <!-- Dynamically code GameScore -->
+        <div class = "GameScore">
+        	<span><strong>Leading - FireCat: 5 correct.</strong></span><span>CupCat:  4 correct</span><span>   MadCat: 3 correct </span> <span>    HalloweenCat: 2 correct</span>
+        </div>
+        
         <form id = "question">
         <!-- TODO: Code population of question. -->
         <h1 >How many cats in a pride of pride?    </h1>
@@ -24,7 +32,7 @@
                   
         </form><!-- id = "question -->
         
-        <!-- TODO: Code auto-population of Avatars/players -->
+         <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
 	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\fireCat.jpg" style = ""><br>
@@ -35,7 +43,7 @@
 	                <label>Longevity Score:543</label>
         </div> <!-- player -->
         
-         <!-- TODO: Code auto-population of Avatars/players -->
+            <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
 	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\cupCat.jpg" style = ""><br>
@@ -69,7 +77,8 @@
 	                <label>Longevity Score:513</label>
         </div> <!-- player -->
         
-      
-    </main>
+
+</main>
+	</div><!-- end "wrapper" -->
 </body>
 </html>

@@ -1,4 +1,4 @@
-package TriviaObjects;
+package triviacats.triviaobjects;
 
 // This object holds the information needed to grab questions of a specific category from the Open Trivia DB.
 public class Category {

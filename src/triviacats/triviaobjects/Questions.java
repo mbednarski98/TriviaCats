@@ -1,4 +1,4 @@
-package TriviaObjects;
+package triviacats.triviaobjects;
 
 import java.util.ArrayList;
 import java.util.Iterator;
