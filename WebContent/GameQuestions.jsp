@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Cat Trivia - Play Game</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
     <main>
@@ -27,7 +27,7 @@
         <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
-	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\fireCat.jpg" style = ""><br>
+	        	<img src = "./img/fireCat.jpg" style = ""><br>
         
 	        <!-- TODO: Code population of score. -->
 	                <label><strong>Game Score: 50</strong></label><br>
@@ -38,7 +38,7 @@
          <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
-	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\cupCat.jpg" style = ""><br>
+	        	<img src = "./img/cupCat.jpg" style = ""><br>
         
 	        <!-- TODO: Code population of score. -->
 	                <label><strong>Game Score: 40</strong></label><br>
@@ -49,7 +49,7 @@
          <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
-	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\madCat.jpg" style = ""><br>
+	        	<img src = "./img/madCat.jpg" style = ""><br>
         
 	        <!-- TODO: Code population of score. -->
 	                <label><strong>Game Score: 30</strong></label><br>
@@ -61,7 +61,7 @@
          <!-- TODO: Code auto-population of Avatars/players -->
         <div class="player">
 	        <!-- TODO: Save the image in our repository. (Couldn't figure out where that was. - aisaac) -->
-	        	<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\HalloweenCat.jpg" style = ""><br>
+	        	<img src = "./img/HalloweenCat.jpg" style = ""><br>
         
 	        <!-- TODO: Code population of score. -->
 	                <label><strong>Game Score: 20</strong></label><br>

@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<link href="main.css" rel="stylesheet" type="text/css">
+<link href="./css/main.css" rel="stylesheet" type="text/css">
 <title>Trivia Cats</title>
 </head>
 <body>

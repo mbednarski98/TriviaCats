@@ -5,14 +5,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Trivia Cat Account</title>
- <link rel="stylesheet" type="text/css" href="main8.css">
+ <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
  <body>
 	<div id="wrapper">
 
 		<header>	
-			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\crazyCat.jpg">
+			<img src = "./img/crazyCat.jpg">
 		    <h1>Trivia Cats</h1>
 		</header>
     
@@ -31,7 +31,7 @@
 
 <main>
 <div id="register">
-<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\fireCat.jpg"><br>
+<img src = "./img/fireCat.jpg"><br>
 	<form class="register">
 			<h1>User Profile</h1>
          <label for="userid">User id:</label><input type="text" required name="userid"><br>

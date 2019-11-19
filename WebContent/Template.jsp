@@ -5,14 +5,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Trivia Cats</title>
- <link rel="stylesheet" type="text/css" href="main7.css">
+ <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
  <body>
 	<div id="wrapper">
 
 		<header>	
-			<img src = "C:\\Users\\amisaac\\git\\TriviaCats\\images\\crazyCat.jpg">
+			<img src = "./img/crazyCat.jpg">
 		    <h1>Cat Trivia</h1>
 		</header>
     
