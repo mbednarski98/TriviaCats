@@ -29,7 +29,7 @@ public class Game {
 	public Player getPlayer(String sessionID) {
 		if (this.playerExists(sessionID)) {
 			for (Player p : this.players) {
-				if (p.getSession().getId() == sessionID) {
+				if (p.getSessionID().equals(sessionID)) {
 					return p;
 				}
 			}
@@ -45,17 +45,17 @@ public class Game {
 	// takes in a session ID, and removes the corresponding player from players list
 	public boolean removePlayer(String sessionID) {
 		for (Player p : this.players) {
-			if (p.getSession().getId().equals(sessionID)) {
+			if (p.getSessionID().equals(sessionID)) {
 				return players.remove(p);
 			}
-		} 
+		}
 		return false;
 	}
 	
 	// takes in a session id, returns true if a player in this game has it, returns false otherwise
 	public boolean playerExists(String sessionID) {
 		for (Player p : this.players) {
-			if (p.getSession().getId().equals(sessionID)) {
+			if (p.getSessionID().equals(sessionID)) {
 				return true;
 			}
 		}
@@ -90,6 +90,16 @@ public class Game {
 	// returns true if game has started, false if otherwise
 	public boolean hasStarted() {
 		return this.started;
+	}
+	
+	// returns true if all players are ready
+	public boolean playersReady() {
+		for (Player p : this.players) {
+			if (!p.isReady()) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	// returns the room number of this game
