@@ -52,7 +52,6 @@ public class Game {
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	
@@ -65,7 +64,7 @@ public class Game {
 	public Question getNextQuestion() {
 		currentQuestionIndex += 1;
 		if (this.questions.size() != currentQuestionIndex) {
-			return this.questions.get(currentQuestionIndex - 1);			
+			return this.getQuestion(currentQuestionIndex - 1);
 		}
 		return null;
 	}
