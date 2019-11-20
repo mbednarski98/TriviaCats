@@ -25,6 +25,18 @@ public class Game {
 		this.started = false;
 	}
 	
+	// returns a player with the given sessionID, returns null if not exist
+	public Player getPlayer(String sessionID) {
+		if (this.playerExists(sessionID)) {
+			for (Player p : this.players) {
+				if (p.getSession().getId() == sessionID) {
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+	
 	// takes in a player, adds it to players list
 	public void addPlayer(Player player) {
 		this.players.add(player);
@@ -32,7 +44,7 @@ public class Game {
 	
 	// takes in a session ID, and removes the corresponding player from players list
 	public boolean removePlayer(String sessionID) {
-		for (Player p : players) {
+		for (Player p : this.players) {
 			if (p.getSession().getId().equals(sessionID)) {
 				return players.remove(p);
 			}
@@ -42,7 +54,7 @@ public class Game {
 	
 	// takes in a session id, returns true if a player in this game has it, returns false otherwise
 	public boolean playerExists(String sessionID) {
-		for (Player p : players) {
+		for (Player p : this.players) {
 			if (p.getSession().getId().equals(sessionID)) {
 				return true;
 			}
@@ -69,12 +81,13 @@ public class Game {
 		return null;
 	}
 	
+	// raises the started flag and obtains questions from opentdb
 	public void startGame() {
 		this.started = true;
 		this.obtainQuestions();
 	}
 	
-	// returns true if game has started, false if otherise
+	// returns true if game has started, false if otherwise
 	public boolean hasStarted() {
 		return this.started;
 	}
