@@ -25,6 +25,11 @@ public class Player {
 		return this.session;
 	}
 	
+	// returns the player's websocket session ID
+	public String getSessionID() {
+		return this.session.getId();
+	}
+	
 	// returns the player's name
 	public String getName() {
 		return this.name;
