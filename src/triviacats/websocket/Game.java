@@ -22,7 +22,6 @@ public class Game {
 	public Game(int roomNumber, Player player) {
 		this.roomNumber = roomNumber;
 		this.addPlayer(player);
-		this.obtainQuestions();
 		this.started = false;
 	}
 	
@@ -41,10 +40,6 @@ public class Game {
 		return false;
 	}
 	
-	public ArrayList<Player> getPlayerList() {
-		return this.players;
-	}
-	
 	// takes in a session id, returns true if a player in this game has it, returns false otherwise
 	public boolean playerExists(String sessionID) {
 		for (Player p : players) {
@@ -53,6 +48,11 @@ public class Game {
 			}
 		}
 		return false;
+	}
+	
+	// returns a list of players
+	public ArrayList<Player> getPlayerList() {
+		return this.players;
 	}
 	
 	// returns the question at the given index
@@ -69,14 +69,19 @@ public class Game {
 		return null;
 	}
 	
-	// returns the room number of this game
-	public int getRoomNumber() {
-		return this.roomNumber;
+	public void startGame() {
+		this.started = true;
+		this.obtainQuestions();
 	}
 	
 	// returns true if game has started, false if otherise
 	public boolean hasStarted() {
 		return this.started;
+	}
+	
+	// returns the room number of this game
+	public int getRoomNumber() {
+		return this.roomNumber;
 	}
 	
 	// gets a list of 25 questions
