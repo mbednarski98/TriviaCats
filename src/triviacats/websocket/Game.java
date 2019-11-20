@@ -50,7 +50,7 @@ public class Game {
 		return false;
 	}
 	
-	// returns a list of players
+	// returns a list of players 
 	public ArrayList<Player> getPlayerList() {
 		return this.players;
 	}
