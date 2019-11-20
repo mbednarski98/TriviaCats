@@ -56,6 +56,11 @@ public class Game {
 		return false;
 	}
 	
+	// returns the question at the given index
+	public Question getQuestion(int index) {
+		return this.questions.get(index);
+	}
+	
 	// returns the next question of the game
 	public Question getNextQuestion() {
 		currentQuestionIndex += 1;
