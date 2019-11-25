@@ -33,6 +33,11 @@ public class Player {
 		return this.session.getId();
 	}
 	
+	// sets the player's name to the specified string
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	// returns the player's name
 	public String getName() {
 		return this.name;
