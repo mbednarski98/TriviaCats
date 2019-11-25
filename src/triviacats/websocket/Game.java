@@ -1,10 +1,12 @@
 package triviacats.websocket;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import triviacats.triviaaggregator.TriviaAggregator;
 import triviacats.triviaobjects.Question;
 import triviacats.triviaobjects.Questions;
+import triviacats.triviaobjects.SanitizedQuestion;
 
 public class Game {
 	// list of players in game
@@ -17,12 +19,14 @@ public class Game {
 	private int		  currentQuestionIndex;
 	// Questions object containing all the questions for the current game
 	private Questions questions;
+	// answer of the current question
+	private int currentQuestionAnswer;
 	
 	// takes in a room number and a single player, generates a Game
-	public Game(int roomNumber, Player player) {
+	public Game(int roomNumber) {
 		this.roomNumber = roomNumber;
-		this.addPlayer(player);
 		this.started = false;
+		this.currentQuestionIndex = 0;
 	}
 	
 	// returns a player with the given sessionID, returns null if not exist
@@ -68,23 +72,66 @@ public class Game {
 	}
 	
 	// returns the question at the given index
-	public Question getQuestion(int index) {
+	private Question getQuestion(int index) {
 		return this.questions.get(index);
 	}
 	
+	public boolean isLastQuestion() {
+		return (currentQuestionIndex >= 25);
+	}
+	
 	// returns the next question of the game
-	public Question getNextQuestion() {
+	private Question getNextQuestion() {
 		currentQuestionIndex += 1;
-		if (this.questions.size() != currentQuestionIndex) {
+		if (this.questions.size() != currentQuestionIndex - 1) {
 			return this.getQuestion(currentQuestionIndex - 1);
 		}
 		return null;
 	}
 	
-	// raises the started flag and obtains questions from opentdb
+	// returns the next question in sanitized format for sending to players
+	public SanitizedQuestion getNextSanitizedQuestion() {
+		Question q = this.getNextQuestion();
+		if (q == null) return null;
+		SanitizedQuestion sq;
+		if (q.getType().equals("multiple")) {
+			int correctPosition = this.getRandomNumber(0, 3);
+			sq = new SanitizedQuestion(this.currentQuestionIndex, q, correctPosition);
+			this.currentQuestionAnswer = sq.getKey(correctPosition);
+			return sq;
+		} else if (q.getType().equals("boolean")) {
+			sq = new SanitizedQuestion(this.currentQuestionIndex, q);
+			for (int i = 0; i != sq.getAnswers().length; i++) {
+				if (sq.getAnswers()[i].equals(q.getCorrectAnswer())) {
+					this.currentQuestionAnswer = sq.getKey(i);
+					break;
+				}
+			}
+			return sq;
+		}
+		return null;
+	}
+		
+	// raises the started flag and obtains questions from opentdb 
 	public void startGame() {
-		this.started = true;
-		this.obtainQuestions();
+		if (this.playersReady()) {
+			this.started = true;
+			this.obtainQuestions();
+			this.currentQuestionIndex = 0;
+		} else {
+			// TODO: make this throw an error if players are not ready
+			System.out.println("Players not ready yet.");
+		}
+	}
+	
+	public void endGame() {
+		for (Player p : this.players) {
+			try {
+				p.getSession().close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	// returns true if game has started, false if otherwise
@@ -112,5 +159,9 @@ public class Game {
 		TriviaAggregator ta = new TriviaAggregator();
 		this.questions = ta.getNewQuestions(25);
 		this.currentQuestionIndex = 0;
+	}
+	
+	private int getRandomNumber(int min, int max) {
+		return (int) (min + (Math.random() * (max - min)));
 	}
 }

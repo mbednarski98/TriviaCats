@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html style="height:100%; width:100%;">
+<head>
+<meta charset="UTF-8">
+<title>Trivia</title>
+</head>
+<body style="height:100%; width:95%;">
+	<div id="gameBoard" style="border-style:solid;border-width:1px;height:70%;display:block;" >
+		
+		<div id="players" style="border-style:solid;border-width:1px;float:left;width:13%;height:99%;">
+		
+			<ul class="playerList">
+				<li>A Player</li>
+			</ul>
+		
+		</div>
+		
+		<div id="triviaBox" style="border-style:solid;border-width:1px;float:right;width:85%;height:99%;">
+			<div id="questionBox" style="display:block; text-align:center; padding: 50px 0;">
+				<h2>
+				<p id="questionText" class="questionText">What is the thing?</p>
+				</h2>
+			</div>
+			
+			<div id="answersBox" class="answersBox" style="display:block;text-align:center;">
+				<ul id="answerList" class="answerList">
+				
+					<li><input id="ANSWER" type="radio" name="answer" value="SOMEVALUE">test</input></li>
+				
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div id="gameChat" style="overflow:hidden; border-style:solid; border-width:1px; height:20%; display:block;">
+		<p id="chatText" style="height:60%; width:100%;"></p>
+		<input id="textBox" type="text" style="margin-left:auto; margin-right:auto; width:100%;">
+	</div>
+	
+	<script src="./js/client.js"></script>
+</body>
+</html>

@@ -24,7 +24,7 @@ public class TriviaWebSocketServer {
 	@OnOpen
 	public void onOpen(Session session, @PathParam("roomnumber") final String roomNumber) {
 		System.out.println("newuser: " + session.getId());
-		System.out.println(gameHandler.toString());
+		System.out.println(this.gameHandler.toString());
 		int rn = -1;
 		try {
 			rn = Integer.parseInt(roomNumber);
@@ -37,12 +37,11 @@ public class TriviaWebSocketServer {
 			this.closeSession(session, "INVALID ROOM NUMBER");
 			return;
 		}
-	
-		if (!gameHandler.roomExists(rn)) {
-			gameHandler.newGame(session, rn);
-		} else if (!gameHandler.findGame(rn).hasStarted()) {
-			Player p = new Player(session, session.getId().toString());
-			gameHandler.findGame(rn).addPlayer(p);
+
+		if (!this.gameHandler.roomExists(rn)) {
+			this.gameHandler.newGame(session, rn);
+		} else if (!this.gameHandler.findGame(rn).hasStarted()) {
+			this.gameHandler.addPlayerToGame(rn, session);
 		} else {
 			this.closeSession(session, "ROOM CLOSED");
 			return;
@@ -52,18 +51,42 @@ public class TriviaWebSocketServer {
 	// actions to be performed when a websocket client disconnects
 	@OnClose
 	public void onClose(Session session) {
-		int roomNumber = gameHandler.findPlayer(session.getId());
+		int roomNumber = this.gameHandler.findPlayer(session.getId());
 		
-		if (gameHandler.findGame(roomNumber) != null) {
-			gameHandler.findGame(roomNumber).removePlayer(session.getId());
+		if (this.gameHandler.findGame(roomNumber) != null) {
+			this.gameHandler.findGame(roomNumber).removePlayer(session.getId());
 		}
 	}
 	
 	// actions to be performed when a message is recieved from a client
 	@OnMessage
 	public void onMessage(String message, Session session) {
-		// int roomNumber = gameHandler.findPlayer(session.getId());
+		int roomNumber = this.gameHandler.findPlayer(session.getId());
 		
+		if (message.contains("ANSWER:")) {
+			int answer = Integer.parseInt(message.split(":")[1]);
+			this.gameHandler.setPlayerAnswer(session.getId(), answer);
+			
+			if (this.gameHandler.allPlayersAnswered(roomNumber)) {
+				// TODO: calculate scores send all players a user score update json,
+				
+				if (this.gameHandler.findGame(roomNumber).isLastQuestion()) {
+					this.gameHandler.sendToAllInRoom(roomNumber, "ENDGAME");
+
+					this.gameHandler.findGame(roomNumber).endGame();
+					this.gameHandler.removeGame(roomNumber);
+				} else {
+					this.gameHandler.sendNewQuestion(roomNumber);
+				}
+				
+			}
+		} else if (message.contains("READY")) {
+			this.gameHandler.setPlayerReady(session.getId());
+			this.gameHandler.tryStartGame(roomNumber);
+			//System.out.println(this.gameHandler.findGame(roomNumber).hasStarted());
+		} else {
+			
+		}
 	}
 	
 	// actions to be performed when a websocket error occurs.

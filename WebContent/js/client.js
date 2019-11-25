@@ -37,9 +37,10 @@ class WebSocketClient {
 			 
 			this.webSocket.onmessage = function(event) {
 				console.debug(event.data);
-				document.getElementById("chatText").innerHTML += "<br>" + event.data
-				var objDiv = document.getElementById("chatBox");
-				objDiv.scrollTop = objDiv.scrollHeight;
+				var ed = JSON.parse(event.data);
+				if (Object.keys(ed)[0] == "player_list") {
+					updateUsers(ed.player_list);
+				}
 			}
 			 
 			this.webSocket.onerror = function(event) {
