@@ -22,13 +22,13 @@ class WebSocketClient {
 			return false;
 		}
 	}
-	 
+	
 	connect() {
 		try {
 			this.webSocket = new WebSocket(this.serverURL);
 			 
 			this.webSocket.onopen = function(event) {
-				
+				this.send("NAME:" + document.getElementById("nameElement").value);
 			}
 			 
 			this.webSocket.onclose = function(event) {

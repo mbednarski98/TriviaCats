@@ -13,6 +13,9 @@
 <title>Trivia</title>
 </head>
 <body style="height:100%; width:95%;">
+	<input id="nameElement" type="text">
+	<button id="sub" type="button" onclick="connectToServer()">CONNECT</button>
+	
 	<h1>USERS</h1>
 	<ul id="userList">
 	</ul>
@@ -20,7 +23,10 @@
 	<script src="./js/client.js"></script>
 	<script>
 		var client = new WebSocketClient("ws", "localhost", "8080", "/TriviaCats/trivia/666");
-		client.connect();
+		
+		function connectToServer() {
+			client.connect();
+		}
 		
 		function updateUsers(userList) {
 			var playerList = document.getElementById("userList");

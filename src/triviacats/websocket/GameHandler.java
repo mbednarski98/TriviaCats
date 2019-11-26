@@ -58,12 +58,14 @@ public class GameHandler {
 		return false;
 	}
 	
+	// adds a player to the specified game, sends an player list update
 	public void addPlayerToGame(int roomNumber, Session session) {
 		Player p = new Player(session, session.getId().toString());
 		this.findGame(roomNumber).addPlayer(p);
 		this.sendPlayerList(roomNumber);
 	}
 	
+	// sets the specified player status to ready
 	public void setPlayerReady(String sessionID) {
 		this.findGame(this.findPlayer(sessionID)).getPlayer(sessionID).setReadyStatus(true);
 	}
@@ -122,6 +124,7 @@ public class GameHandler {
 		// TODO: make this send the results of a question completed by all users, to all users
 	}
 	
+	// sends a message to all players in the specified room
 	public void sendToAllInRoom(int roomNumber, String message) {
 		if (this.roomExists(roomNumber)) {
 			for (int i = 0; i != this.findGame(roomNumber).getPlayerList().size(); i++) {
@@ -135,11 +138,12 @@ public class GameHandler {
 		}
 	}
 	
+	// creates a JSON text list of all players in game
 	private String createPlayerList(int roomNumber) {
 		Game g = this.findGame(roomNumber);
 		String playerListJSON = "{\"player_list\": [ ";
 		for (Player p : g.getPlayerList()) {
-			playerListJSON += "\"" + p.getSessionID() + "\"";
+			playerListJSON += "\"" + p.getName() + "\"";
 			if (g.getPlayerList().indexOf(p) != g.getPlayerList().size() - 1) {
 				playerListJSON += ", ";
 			}

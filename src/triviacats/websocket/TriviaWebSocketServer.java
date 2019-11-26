@@ -55,6 +55,7 @@ public class TriviaWebSocketServer {
 		
 		if (this.gameHandler.findGame(roomNumber) != null) {
 			this.gameHandler.findGame(roomNumber).removePlayer(session.getId());
+			this.gameHandler.sendPlayerList(roomNumber);
 		}
 	}
 	
@@ -84,6 +85,10 @@ public class TriviaWebSocketServer {
 			this.gameHandler.setPlayerReady(session.getId());
 			this.gameHandler.tryStartGame(roomNumber);
 			//System.out.println(this.gameHandler.findGame(roomNumber).hasStarted());
+		} else if (message.contains("NAME:")) {
+			String name = message.split(":")[1];
+			this.gameHandler.findGame(roomNumber).getPlayer(session.getId()).setName(name);
+			this.gameHandler.sendPlayerList(roomNumber);
 		} else {
 			
 		}
