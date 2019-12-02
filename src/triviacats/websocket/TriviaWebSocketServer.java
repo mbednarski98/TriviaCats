@@ -78,6 +78,7 @@ public class TriviaWebSocketServer {
 				this.gameHandler.sendQuestionResults(roomNumber, qResultsJSON);
 				
 				if (this.gameHandler.findGame(roomNumber).isLastQuestion()) {
+					//TODO: Send a proper message indicating the end of the game, most preferably a JSON object
 					this.gameHandler.sendToAllInRoom(roomNumber, "ENDGAME");
 
 					this.gameHandler.findGame(roomNumber).endGame();

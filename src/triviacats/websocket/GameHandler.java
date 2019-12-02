@@ -92,12 +92,7 @@ public class GameHandler {
 		Player p = g.getPlayer(sessionID);
 		p.setAnswer(answer);
 		
-		//TODO: Replace with PlayerUpdate logic
-		
 		this.sendPlayerUpdate(sessionID, "answered");
-		
-		/*String answerJSON = "{\"user\":\"" + sessionID + "\", \"answered\":true}";
-		this.sendToAllInRoom(roomNumber, answerJSON);*/
 	}
 	
 	// returns true if all users have answered the question

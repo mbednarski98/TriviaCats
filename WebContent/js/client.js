@@ -40,11 +40,14 @@ class WebSocketClient {
 			 
 			this.webSocket.onmessage = function(event) {
 				console.debug(event.data);
-				var ed = JSON.parse(event.data);
-				if (Object.keys(ed)[0] == "player_list") {
-					updateUsers(ed.player_list);
-				} else if (Object.keys(ed)[0] == "question_number") {
-					displayQuestion(ed);
+				
+				if (event.data != "ENDGAME") {
+					var ed = JSON.parse(event.data);
+					if (Object.keys(ed)[0] == "player_list") {
+						updateUsers(ed.player_list);
+					} else if (Object.keys(ed)[0] == "question_number") {
+						displayQuestion(ed);
+					}
 				}
 			}
 			 
