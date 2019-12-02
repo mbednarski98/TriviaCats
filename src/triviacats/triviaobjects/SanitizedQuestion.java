@@ -39,18 +39,12 @@ public class SanitizedQuestion {
 	private void sanitizeMultiple(String correctAnswer, String[] incorrectAnswers, int correctPosition) {
 		ArrayList<String> answers = new ArrayList<>();
 		for (int i = 0; i != incorrectAnswers.length; i++) {
-			System.out.println(incorrectAnswers[i]);
 			answers.add(incorrectAnswers[i]);
 		}
-		System.out.println("Shuffling Answers");
 		Collections.shuffle(answers);
-		System.out.println(answers.get(0));
-		System.out.println("Adding correct answer: " + correctPosition);
 		answers.add(correctPosition, correctAnswer);
 		this.answerKeys = new int[answers.size()];
-		System.out.println("making answers into array");
 		this.answers = answers.toArray(new String[answers.size()]);
-		System.out.println("Assigning keys");
 		this.assignKeys();
 	}
 

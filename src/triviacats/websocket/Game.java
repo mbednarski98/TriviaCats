@@ -132,7 +132,6 @@ public class Game {
 			this.currentQuestionIndex = 0;
 		} else {
 			// TODO: make this throw an error if players are not ready
-			System.out.println("Players not ready yet.");
 		}
 	}
 	

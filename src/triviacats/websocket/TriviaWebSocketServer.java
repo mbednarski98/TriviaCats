@@ -25,8 +25,6 @@ public class TriviaWebSocketServer {
 	// actions to be performs on the connection of a new websocket client
 	@OnOpen
 	public void onOpen(Session session, @PathParam("roomnumber") final String roomNumber) {
-		System.out.println("newuser: " + session.getId());
-		System.out.println(this.gameHandler.toString());
 		int rn = -1;
 		try {
 			rn = Integer.parseInt(roomNumber);
@@ -91,7 +89,6 @@ public class TriviaWebSocketServer {
 		} else if (message.contains("READY")) {
 			this.gameHandler.setPlayerReady(session.getId());
 			this.gameHandler.tryStartGame(roomNumber);
-			//System.out.println(this.gameHandler.findGame(roomNumber).hasStarted());
 		} else if (message.contains("NAME:")) {
 			String name = message.split(":")[1];
 			this.gameHandler.findGame(roomNumber).getPlayer(session.getId()).setName(name);
