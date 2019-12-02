@@ -16,18 +16,7 @@
 		    <h1>Cat Trivia</h1>
 		</header>
     
-	<nav>
-		<ul>
-			<li><strong>Menu</strong></li>
-			<li><span>Page User is on</span></li>
-			<li><a href="HomePage.jsp">Home</a></li>
-			<li><a href="LoginInPage.jsp">Login/Register</a></li>
-			<li><a href="GameLobby.jsp">Game Lobby</a></li>
-			<li><a href="Dashboard.jsp">Dashboard</a></li>
-			<li><a href="ShopPage.jsp">Shop Accessories</a></li>
-			<li><a href="AccountPage.jsp">Account</a></li>
-		</ul>
-	</nav>
+	<jsp:include page="./utils/toolbar.jsp" />
 
 	
 	<main id= "home">

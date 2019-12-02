@@ -35,25 +35,28 @@ header h1{
 	padding: 0 0 0 10px;
 }
 /*navigation*/
-nav{
-	border: 1px solid #000;
-	display: inline;
-	width: 124px;
-	height: 600px;
-	padding: 10px;
-	float:left;
-}
-nav ul li{
-	margin: 0px 20px;
+nav ul {
 	list-style-type: none;
-	
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
-nav ul li a, nav ul li span{
-	color: #000;
-	text-decoration: none;	
+
+nav li {
+	float: left;
 }
-nav ul li a:hover,nav ul li span{
-	text-decoration:underline;
+
+nav li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	background-color: #111;
 }
 /*h2-h6*/
 h2{
