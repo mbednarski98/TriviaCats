@@ -80,6 +80,12 @@ public class Game {
 		return (currentQuestionIndex >= 25);
 	}
 	
+	public void resetPlayerAnswers() {
+		for (Player p : players) {
+			p.setAnswer(-1);
+		}
+	}
+	
 	// returns the next question of the game
 	private Question getNextQuestion() {
 		currentQuestionIndex += 1;
@@ -112,6 +118,10 @@ public class Game {
 		return null;
 	}
 		
+	public int getCurrentQuestionAnswer() {
+		return this.currentQuestionAnswer;
+	}
+	
 	// raises the started flag and obtains questions from opentdb 
 	public void startGame() {
 		if (this.playersReady()) {
@@ -161,6 +171,7 @@ public class Game {
 		this.currentQuestionIndex = 0;
 	}
 	
+	// returns a random number between min and max
 	private int getRandomNumber(int min, int max) {
 		return (int) (min + (Math.random() * (max - min)));
 	}

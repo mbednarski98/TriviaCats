@@ -114,14 +114,28 @@ public class GameHandler {
 	
 	// sends the next question to all users in a given room
 	public void sendNewQuestion(int roomNumber) {
+		Game g = this.findGame(roomNumber);
+		g.resetPlayerAnswers();
+		
 		Gson gson = new Gson();
-		SanitizedQuestion sq = this.findGame(roomNumber).getNextSanitizedQuestion();
+		SanitizedQuestion sq = g.getNextSanitizedQuestion();
 		String sanQuestionJSON	= gson.toJson(sq);
 		this.sendToAllInRoom(roomNumber, sanQuestionJSON);
 	}
 	
 	public void sendQuestionResults(int roomNumber) {
 		// TODO: make this send the results of a question completed by all users, to all users
+	}
+	
+	// Awards points to players with the correct score
+	public void awardPoints(int roomNumber) {
+		Game g = this.findGame(roomNumber);
+		for (Player p : g.getPlayerList()) {
+			if (p.getAnswer() == g.getCurrentQuestionAnswer()) {
+				p.incrementScore(10);
+			}
+		}
+		// TODO: Send JSON with updated player scores
 	}
 	
 	// sends a message to all players in the specified room
@@ -152,4 +166,5 @@ public class GameHandler {
 		
 		return playerListJSON;
 	}
+
 }

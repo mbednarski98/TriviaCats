@@ -59,7 +59,7 @@ public class TriviaWebSocketServer {
 		}
 	}
 	
-	// actions to be performed when a message is recieved from a client
+	// actions to be performed when a message is received from a client
 	@OnMessage
 	public void onMessage(String message, Session session) {
 		int roomNumber = this.gameHandler.findPlayer(session.getId());
@@ -77,6 +77,7 @@ public class TriviaWebSocketServer {
 					this.gameHandler.findGame(roomNumber).endGame();
 					this.gameHandler.removeGame(roomNumber);
 				} else {
+					this.gameHandler.awardPoints(roomNumber);
 					this.gameHandler.sendNewQuestion(roomNumber);
 				}
 				

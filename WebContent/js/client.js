@@ -1,5 +1,8 @@
 class WebSocketClient {
 	
+	// constructor takes in a protocol ("ws" or for secure connections "wss")
+	// to test on local machine set hostname as "localhost", port should be "8080",
+	// the endpoint should be the full path to the 'trivia'
 	constructor(protocol, hostname, port, endpoint) {
 		
 		this.webSocket = null;
@@ -40,6 +43,8 @@ class WebSocketClient {
 				var ed = JSON.parse(event.data);
 				if (Object.keys(ed)[0] == "player_list") {
 					updateUsers(ed.player_list);
+				} else if (Object.keys(ed)[0] == "question_number") {
+					displayQuestion(ed);
 				}
 			}
 			 
