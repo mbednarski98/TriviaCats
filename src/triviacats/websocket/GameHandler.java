@@ -9,6 +9,7 @@ import javax.websocket.Session;
 import com.google.gson.Gson;
 
 import triviacats.triviaobjects.SanitizedQuestion;
+import triviacats.updateobjects.PlayerList;
 
 @ApplicationScoped
 public class GameHandler {
@@ -135,7 +136,6 @@ public class GameHandler {
 				p.incrementScore(10);
 			}
 		}
-		// TODO: Send JSON with updated player scores
 	}
 	
 	// sends a message to all players in the specified room
@@ -155,16 +155,11 @@ public class GameHandler {
 	// creates a JSON text list of all players in game
 	private String createPlayerList(int roomNumber) {
 		Game g = this.findGame(roomNumber);
-		String playerListJSON = "{\"player_list\": [ ";
-		for (Player p : g.getPlayerList()) {
-			playerListJSON += "\"" + p.getName() + "\"";
-			if (g.getPlayerList().indexOf(p) != g.getPlayerList().size() - 1) {
-				playerListJSON += ", ";
-			}
-		}
-		playerListJSON += "]}";
 		
-		return playerListJSON;
+		PlayerList playerList = new PlayerList(g.getPlayerList());
+		Gson gson = new Gson();
+		
+		return gson.toJson(playerList);
 	}
 
 }

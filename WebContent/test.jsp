@@ -62,10 +62,10 @@
 		function updateUsers(userList) {
 			var playerList = document.getElementById("userList");
 			playerList.innerHTML = "";
-			for (const element of userList) {
-				var user = document.createElement("li");
-				user.innerHTML = element;
-				playerList.appendChild(user);
+			for (const [key, value] of Object.entries(userList)) {
+				var userListItem = document.createElement("li");
+				userListItem.innerHTML = value;
+				playerList.appendChild(userListItem);
 			}
 		}
 		
