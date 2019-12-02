@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 
 import triviacats.triviaobjects.SanitizedQuestion;
 import triviacats.updateobjects.PlayerList;
+import triviacats.updateobjects.PlayerUpdate;
 import triviacats.updateobjects.QuestionResult;
 import triviacats.updateobjects.QuestionResults;
 
@@ -88,9 +89,15 @@ public class GameHandler {
 	public void setPlayerAnswer(String sessionID, int answer) {
 		int roomNumber = this.findPlayer(sessionID);
 		Game g = this.findGame(roomNumber);
-		g.getPlayer(sessionID).setAnswer(answer);
-		String answerJSON = "{\"user\":\"" + sessionID + "\", \"answered\":true}";
-		this.sendToAllInRoom(roomNumber, answerJSON);
+		Player p = g.getPlayer(sessionID);
+		p.setAnswer(answer);
+		
+		//TODO: Replace with PlayerUpdate logic
+		
+		this.sendPlayerUpdate(roomNumber, p, "answered");
+		
+		/*String answerJSON = "{\"user\":\"" + sessionID + "\", \"answered\":true}";
+		this.sendToAllInRoom(roomNumber, answerJSON);*/
 	}
 	
 	// returns true if all users have answered the question
@@ -131,6 +138,12 @@ public class GameHandler {
 		String qResultsJSON = this.createQuestionResultsJSON(questionResults);
 		
 		this.sendToAllInRoom(roomNumber, qResultsJSON);
+	}
+	
+	public void sendPlayerUpdate(int roomNumber, Player p, String playerState) {
+		String playerUpdate = this.createPlayerUpdateJSON(p, playerState);
+		
+		this.sendToAllInRoom(roomNumber, playerUpdate);
 	}
 	
 	// Awards points to players with the correct score, returns a QuestionResults JSON object
@@ -175,5 +188,11 @@ public class GameHandler {
 	
 	private String createQuestionResultsJSON(QuestionResults questionResults) {
 		return this.gson.toJson(questionResults);
+	}
+	
+	private String createPlayerUpdateJSON(Player p, String playerState) {
+		PlayerUpdate playerUpdate = new PlayerUpdate(p, playerState);
+		
+		return this.gson.toJson(playerUpdate);
 	}
 }

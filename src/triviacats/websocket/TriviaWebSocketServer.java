@@ -80,7 +80,6 @@ public class TriviaWebSocketServer {
 					this.gameHandler.findGame(roomNumber).endGame();
 					this.gameHandler.removeGame(roomNumber);
 				} else {
-					this.gameHandler.awardPoints(roomNumber);
 					this.gameHandler.sendNewQuestion(roomNumber);
 				}
 				
