@@ -10,11 +10,14 @@ import com.google.gson.Gson;
 
 import triviacats.triviaobjects.SanitizedQuestion;
 import triviacats.updateobjects.PlayerList;
+import triviacats.updateobjects.QuestionResult;
+import triviacats.updateobjects.QuestionResults;
 
 @ApplicationScoped
 public class GameHandler {
 	// list of all games
 	private ArrayList<Game> games = new ArrayList<>();
+	private Gson gson = new Gson();
 	
 	// takes in a session and a room number and makes a new game
 	public void newGame(Session session, int roomNumber) {
@@ -102,7 +105,7 @@ public class GameHandler {
 	
 	// sends a json of all players to each player
 	public void sendPlayerList(int roomNumber) {
-		String playerListJSON = this.createPlayerList(roomNumber);
+		String playerListJSON = this.createPlayerListJSON(roomNumber);
 		for (Player p : this.findGame(roomNumber).getPlayerList()) {
 			try {
 				p.getSession().getBasicRemote().sendText(playerListJSON);
@@ -124,18 +127,27 @@ public class GameHandler {
 		this.sendToAllInRoom(roomNumber, sanQuestionJSON);
 	}
 	
-	public void sendQuestionResults(int roomNumber) {
-		// TODO: make this send the results of a question completed by all users, to all users
+	public void sendQuestionResults(int roomNumber, QuestionResults questionResults) {
+		String qResultsJSON = this.createQuestionResultsJSON(questionResults);
+		
+		this.sendToAllInRoom(roomNumber, qResultsJSON);
 	}
 	
-	// Awards points to players with the correct score
-	public void awardPoints(int roomNumber) {
+	// Awards points to players with the correct score, returns a QuestionResults JSON object
+	public QuestionResults awardPoints(int roomNumber) {
 		Game g = this.findGame(roomNumber);
+		ArrayList<QuestionResult> questionResultsArray = new ArrayList<>();
+		Boolean answeredCorrectly;
+		
 		for (Player p : g.getPlayerList()) {
+			answeredCorrectly = false;
 			if (p.getAnswer() == g.getCurrentQuestionAnswer()) {
+				answeredCorrectly = true;
 				p.incrementScore(10);
 			}
+			questionResultsArray.add(new QuestionResult(p, answeredCorrectly));
 		}
+		return new QuestionResults(questionResultsArray);
 	}
 	
 	// sends a message to all players in the specified room
@@ -153,13 +165,15 @@ public class GameHandler {
 	}
 	
 	// creates a JSON text list of all players in game
-	private String createPlayerList(int roomNumber) {
+	private String createPlayerListJSON(int roomNumber) {
 		Game g = this.findGame(roomNumber);
 		
 		PlayerList playerList = new PlayerList(g.getPlayerList());
-		Gson gson = new Gson();
 		
-		return gson.toJson(playerList);
+		return this.gson.toJson(playerList);
 	}
-
+	
+	private String createQuestionResultsJSON(QuestionResults questionResults) {
+		return this.gson.toJson(questionResults);
+	}
 }

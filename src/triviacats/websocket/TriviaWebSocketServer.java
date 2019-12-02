@@ -13,6 +13,8 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import triviacats.updateobjects.QuestionResults;
+
 @ServerEndpoint("/trivia/{roomnumber}")
 public class TriviaWebSocketServer {	
 	
@@ -69,7 +71,8 @@ public class TriviaWebSocketServer {
 			this.gameHandler.setPlayerAnswer(session.getId(), answer);
 			
 			if (this.gameHandler.allPlayersAnswered(roomNumber)) {
-				// TODO: calculate scores send all players a user score update json,
+				QuestionResults qResultsJSON = this.gameHandler.awardPoints(roomNumber);
+				this.gameHandler.sendQuestionResults(roomNumber, qResultsJSON);
 				
 				if (this.gameHandler.findGame(roomNumber).isLastQuestion()) {
 					this.gameHandler.sendToAllInRoom(roomNumber, "ENDGAME");
