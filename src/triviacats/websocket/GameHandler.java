@@ -94,7 +94,7 @@ public class GameHandler {
 		
 		//TODO: Replace with PlayerUpdate logic
 		
-		this.sendPlayerUpdate(roomNumber, p, "answered");
+		this.sendPlayerUpdate(sessionID, "answered");
 		
 		/*String answerJSON = "{\"user\":\"" + sessionID + "\", \"answered\":true}";
 		this.sendToAllInRoom(roomNumber, answerJSON);*/
@@ -140,10 +140,13 @@ public class GameHandler {
 		this.sendToAllInRoom(roomNumber, qResultsJSON);
 	}
 	
-	public void sendPlayerUpdate(int roomNumber, Player p, String playerState) {
+	public void sendPlayerUpdate(String sessionID, String playerState) {
+		Game g = this.findGame(this.findPlayer(sessionID));
+		Player p = g.getPlayer(sessionID);
+		
 		String playerUpdate = this.createPlayerUpdateJSON(p, playerState);
 		
-		this.sendToAllInRoom(roomNumber, playerUpdate);
+		this.sendToAllInRoom(g.getRoomNumber(), playerUpdate);
 	}
 	
 	// Awards points to players with the correct score, returns a QuestionResults JSON object

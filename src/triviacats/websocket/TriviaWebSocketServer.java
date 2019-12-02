@@ -42,8 +42,10 @@ public class TriviaWebSocketServer {
 
 		if (!this.gameHandler.roomExists(rn)) {
 			this.gameHandler.newGame(session, rn);
+			this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
 		} else if (!this.gameHandler.findGame(rn).hasStarted()) {
 			this.gameHandler.addPlayerToGame(rn, session);
+			this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
 		} else {
 			this.closeSession(session, "ROOM CLOSED");
 			return;
@@ -56,6 +58,7 @@ public class TriviaWebSocketServer {
 		int roomNumber = this.gameHandler.findPlayer(session.getId());
 		
 		if (this.gameHandler.findGame(roomNumber) != null) {
+			this.gameHandler.sendPlayerUpdate(session.getId(), "left_game");
 			this.gameHandler.findGame(roomNumber).removePlayer(session.getId());
 			this.gameHandler.sendPlayerList(roomNumber);
 		}
