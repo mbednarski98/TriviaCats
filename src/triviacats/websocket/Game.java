@@ -9,6 +9,8 @@ import triviacats.triviaobjects.Questions;
 import triviacats.triviaobjects.SanitizedQuestion;
 
 public class Game {
+	// number of questions per game
+	int numQ = 5;
 	// list of players in game
 	private ArrayList<Player> players = new ArrayList<>();
 	// the websocket room number
@@ -77,7 +79,7 @@ public class Game {
 	}
 	
 	public boolean isLastQuestion() {
-		return (currentQuestionIndex >= 25);
+		return (currentQuestionIndex >= numQ);
 	}
 	
 	public void resetPlayerAnswers() {
@@ -167,7 +169,7 @@ public class Game {
 	// gets a list of 25 questions
 	private void obtainQuestions() {
 		TriviaAggregator ta = new TriviaAggregator();
-		this.questions = ta.getNewQuestions(25);
+		this.questions = ta.getNewQuestions(numQ);
 		this.currentQuestionIndex = 0;
 	}
 	

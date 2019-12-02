@@ -163,10 +163,13 @@ public class GameHandler {
 	
 	// sends a message to all players in the specified room
 	public void sendToAllInRoom(int roomNumber, String message) {
-		if (this.roomExists(roomNumber)) {
-			for (int i = 0; i != this.findGame(roomNumber).getPlayerList().size(); i++) {
+		Game g = this.findGame(roomNumber);
+		if (g != null) {
+			for (Player p : g.getPlayerList()) {
 				try {
-					this.findGame(roomNumber).getPlayerList().get(i).getSession().getBasicRemote().sendText(message);
+					if (p.getSession().isOpen()) {
+						p.getSession().getBasicRemote().sendText(message);
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
