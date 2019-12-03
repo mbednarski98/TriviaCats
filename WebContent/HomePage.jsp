@@ -10,15 +10,10 @@
 
  <body>
 	<div id="wrapper">
-
-		<header>	
-			<img src = "./img/crazyCat.jpg">
-		    <h1>Cat Trivia</h1>
-		</header>
-    
+	
+	<jsp:include page="./utils/header.jsp" />
 	<jsp:include page="./utils/toolbar.jsp" />
 
-	
 	<main id= "home">
 		<div id="welcome">
 		<img src = "./img/coolCat.jpg">

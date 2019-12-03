@@ -8,25 +8,24 @@ padding:0;
 body{
 	/*short-cut order for font is font-style, font-variant, font-weight, font-size/line-height font-family(ies).  Must have minimum of font-size/line-height*/
 	font:100%/1.5 sans-serif;
-	background: #eee;
+	background: #FFF8F0;
 }
 
 /*wrapper*/
 #wrapper{
-width:1024px;
+/*width:1024px;*/
 margin: 0 auto;	
 }
 
 /*header*/
 header{
 	/*background short-cut in order - color, url link to image, repeat, position*/
+	background: #5E548E; /*Purple Navy*/
 	border-bottom: 10px solid black;
 	height: 140px;
-	padding: 10px 0px 0px 10px;
 }
 header img{
-	height: 120px;
-	width: 120px;
+	height:100%;
 }
 header h1{
 	display: inline;
@@ -64,11 +63,9 @@ h2{
 }
 /*main*/
 main{
-	background: darkgray;
+	
 	display:inline;
-	width: 800px;
-	height: 600px;
-	padding:10px;
+	width: 100%;
 	float:left;
 }
 main div#welcome{
@@ -91,14 +88,16 @@ main div#welcome h2 img{
 /*Form Base*/
 form{
 	display:block;
-	margin: 10px auto;
-	padding: 20px;
-	background:#eee;
+	padding: 10px;
+	margin: 0px auto;
+	background: #9F86C0;
+	border: solid #333 5px;
 }
 form img{
 	width: 200px;
 	height: 200px;
 	margin: 10px auto;
+	display: block;
 }
 form label{
 	display:block;

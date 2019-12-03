@@ -11,28 +11,12 @@
  <body>
 	<div id="wrapper">
 
-		<header>	
-			<img src = "./img/crazyCat.jpg">
-		    <h1>Cat Trivia</h1>
-		</header>
-    
-	<nav>
-		<ul>
-			<li><strong>Menu</strong></li>
-			<li><span>Page User is on</span></li>
-		  <li><a href="HomePage.jsp">Home</a></li>
-		  <li><a href="LoginInPage.jsp">Login/Register</a></li>
-		  <li><a href="GameLobby.jsp">Game Lobby</a></li>
-		  <li><a href="Dashboard.jsp">Dashboard</a></li>
-		  <li><a href="ShopPage.jsp">Shop Accessories</a></li>
-		  <li><a href="AccountPage.jsp">Account</a></li>
-		</ul>
-	</nav>
-
+	<jsp:include page="./utils/header.jsp" />
+	<jsp:include page="./utils/toolbar.jsp" />
+	
 <main>
-
 	<form class="login">
-			<img src = "./img/colorCrazyCat.jpg"><br>
+			<img src = "./img/cat1.png"><br>
 		<h1>Trivia Cats</h1>
          <label for="userid">User id:</label><input type="text" required name="userid"><br>
          <label for = "password">Password:</label><input type="text" required name="password"><br>
