@@ -89,7 +89,8 @@ main div#welcome h2 img{
 form{
 	display:block;
 	padding: 10px;
-	margin: 0px auto;
+	width: 25%;
+	margin: 10px auto;
 	background: #9F86C0;
 	border: solid #333 5px;
 }
@@ -99,18 +100,28 @@ form img{
 	margin: 10px auto;
 	display: block;
 }
+
+form h1{
+	text-align: center;
+	margin: 0 auto;
+}
+div.center {
+	text-align:center;
+}
 form label{
-	display:block;
+	text-align:center;
 	width: 80px;
 	height: 20px;
-	margin: 4px;
+	/*margin: 4px;*/
 	float:left;
 }
+
 form input{
 	width: 80px;
 	height: 20px;
 	margin: 4px;
 }
+
 
 form input[type=text]{
 	background: #fff;
@@ -215,4 +226,18 @@ div.player label{
 	font-size: 14px;
 }
 
+/*Cat Card*/
+div.card{
+	height: 300px;
+	width: 232px;
+}
+div.card img{
+	display:block;
+	width: 75%;
+	height: 75%;
+	margin: 10px auto;
+}
+div.card label{
+	text-align:center;
+}
 
