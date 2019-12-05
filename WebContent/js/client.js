@@ -126,4 +126,12 @@ class WebSocketClient {
 			snackBar.className = snackBar.className.replace("show", "");
 		}, 2500);
 	}
+	
+	// handle if ready
+	checkReady() {
+		var readyCheck = document.getElementById("readyCheck");
+		if (readyCheck.checked) {
+			client.send("READY");
+		}
+	}
 }
