@@ -131,14 +131,14 @@ class WebSocketClient {
 	}
 	
 	// handle if ready
-	checkReady() {
+	sendReady() {
 		var readyCheck = document.getElementById("readyCheck");
 		if (readyCheck.checked) {
 			client.send("READY");
 		}
 	}
 	
-	// submitAnswer
+	// submit answer
 	submitAnswer() {
 		var answers = document.getElementsByName("qAnswer");
 

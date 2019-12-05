@@ -10,7 +10,7 @@ import triviacats.triviaobjects.SanitizedQuestion;
 
 public class Game {
 	// number of questions per game
-	int numQ = 5;
+	int numQ = 10;
 	// list of players in game
 	private ArrayList<Player> players = new ArrayList<>();
 	// the websocket room number
