@@ -115,7 +115,10 @@ class WebSocketClient {
 	
 	// handle question results
 	integrateQuestionResults(questionResults) {
-		
+		for (const player of  questionResults) {
+			var playerScore = document.getElementById(player.player_id + "score");
+			playerScore.innerHTML = player.points;
+		}
 	}
 	
 	// handle player updates
