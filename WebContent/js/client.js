@@ -134,4 +134,16 @@ class WebSocketClient {
 			client.send("READY");
 		}
 	}
+	
+	// submitAnswer
+	submitAnswer() {
+		var answers = document.getElementsByName("qAnswer");
+
+		for (i = 0; i != answers.length; i++) {
+			if (answers[i].checked) {
+				client.send("ANSWER:" + answers[i].value);
+				break;
+			}
+		}
+	}
 }
