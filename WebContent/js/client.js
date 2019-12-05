@@ -76,4 +76,50 @@ class WebSocketClient {
 		}
 	}
 	
+	// handle new questions
+	displayNewQuestion(question) {
+		var answerList = document.getElementById("answerList");
+		answerList.innerHTML = "";
+		
+		var questionText = document.getElementById("questionText");
+		questionText.innerHTML(question.question_text);
+		
+		for (i = 0; i != question.answers.length; i++) {
+			var answer = document.createElement("input");
+			answer.id	 = "answer" + i;
+			answer.name	 = "qAnswer";
+			answer.type	 = "radio";
+			answer.value = question.answerKeys[i];
+			
+			var answerLabel = document.createElement("label");
+			answerLabel.for = answer.id;
+			answerLabel.innerHTML = question.answers[i];
+			
+			answers.appendChild(answer);
+			answers.appendChild(answerLabel);
+			answers.appendChild(document.createElement("br"));
+		}
+	}
+	
+	// handle player list
+	updatePlayerList(pList) {
+		var playerList = document.getElementById("playerList");
+		playerList.innerHTML = "";
+		
+		for (const [key, value] of Object.entries(pList)) {
+			var playerListItem = document.createElement("li");
+			playerListItem.innerHTML = value;
+			playerList.appendChild(userListItem);
+		}
+	}
+	
+	// handle question results
+	integrateQuestionResults(questionResults) {
+		
+	}
+	
+	// handle player updates
+	handlePlayerUpdate(playerUpdate) {
+		
+	}
 }
