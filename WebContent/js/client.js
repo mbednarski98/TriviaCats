@@ -2,7 +2,7 @@ class WebSocketClient {
 	
 	// constructor takes in a protocol ("ws" or for secure connections "wss")
 	// to test on local machine set hostname as "localhost", port should be "8080",
-	// the endpoint should be the full path to the 'trivia'
+	// the endpoint should be the full path to the 'trivia' folder
 	constructor(protocol, hostname, port, endpoint) {
 		
 		this.webSocket = null;
