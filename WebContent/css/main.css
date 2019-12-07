@@ -168,15 +168,28 @@ form.register input[type=submit]{
 
 
 
-/*Game Lobby Page*/
-form.gameDetail{
-	margin: 10px;
-	padding: 10px;
-	background: #fff;
-	border: 1px solid black;
-	width: 40%;
-	float:left;
+/*Dashboard Page*/
+div#roomContainer{
 	
+}
+div.roomCard{
+	border: solid black 5px;
+	border-radius: 30px;
+	background: #5E548E; /*Purple Navy*/
+	border: solid #9F86C0 2px; /*lavander*/
+	margin: 10px;
+	padding: 15px;
+	float: left;
+}
+div.roomCard h3{
+	float: left;
+}
+div.roomCard button{
+	margin: 0 0 0 10px;
+	background-color: #9F86C0;
+	padding: 2px;
+	font-size: 20px;
+	clear: both;
 }
 
 /*Question Screen*/
@@ -225,22 +238,98 @@ div.player label{
 	margin: 2px;
 	font-size: 14px;
 }
-
+/*Cat Container*/
+div#catCardContainer{
+	overflow: auto;
+	margin: 0 10px 0 10px;
+}
 /*Cat Card*/
-div.card{
+div.catCard{
+	border-radius: 30px;
+	background: #5E548E; /*Purple Navy*/
+	border: solid #9F86C0 2px;
 	height: 300px;
 	width: 232px;
+	float: left;
 }
-div.card img{
+div.catCard img{
 	display:block;
 	width: 75%;
 	height: 75%;
 	margin: 10px auto;
 }
-div.card label{
+div.catCard label{
+	display: block;
 	text-align:center;
 }
 
+<<<<<<< HEAD
+/*Question Container*/
+div#questionContainer{
+	clear: both;
+	margin: 10px 10px 0 10px;
+	border-radius: 30px;
+	background: #5E548E; /*Purple Navy*/
+	border: solid #9F86C0 2px; /*lavander*/
+}
+div#questionContainer button{
+	background-color: #9F86C0;
+	border-radius: 15px;
+	font-size: 20px;
+	padding: 6px;
+	margin: 10px auto;
+    display: block;
+}
+div#questionContainer h2{
+	text-align: center;
+}
+div#answers{
+	background: #9F86C0;
+	border: solid #9F86C0 5px;
+	width: 75%;
+	margin: 0 auto;
+	border-radius: 30px;
+	padding: 15px;
+}
+
+
+
+/*Shop page*/
+div#shopContainer{
+	border: solid black 5px;
+	height:200px;
+}
+div.center{
+	border:solid red 5px;
+	width:32%;
+	height:100%;
+	float: left;
+}
+div.center img{
+	height:100%;
+	margin: auto;
+}
+div.left{
+	display:inline;
+	border:solid blue 5px;
+	width:33%;
+	height:100%;
+	float: left;
+	overflow: auto;
+}
+div.right{
+	display:inline;
+	border:solid blue 5px;
+	width:33%;
+	height:100%;
+	float: right;
+	overflow: auto;
+}
+div.right button, div.left button{
+	height: 100%;
+	width: 100%;
+	display: block;
+=======
 #snackbar {
   visibility: hidden;
   min-width: 250px;
