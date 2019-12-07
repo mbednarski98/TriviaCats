@@ -16,7 +16,7 @@
 		if (session.getAttribute("username") != null) {
 			username = (String) session.getAttribute("username");
 		} else {
-			username = "Tom";
+			username = "NAME:Tom";
 			session.setAttribute("username", username);
 		}
 	%>

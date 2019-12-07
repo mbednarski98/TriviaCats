@@ -299,16 +299,6 @@ div#shopContainer{
 	border: solid black 5px;
 	height:200px;
 }
-div.center{
-	border:solid red 5px;
-	width:32%;
-	height:100%;
-	float: left;
-}
-div.center img{
-	height:100%;
-	margin: auto;
-}
 div.left{
 	display:inline;
 	border:solid blue 5px;
