@@ -296,24 +296,28 @@ div#answers{
 
 /*Shop page*/
 div#shopContainer{
-	border: solid black 5px;
-	height:200px;
+	height:300px;
+	text-align:center;
 }
-div.left{
-	display:inline;
-	border:solid blue 5px;
-	width:33%;
+div#shopContainer div.left {
 	height:100%;
-	float: left;
-	overflow: auto;
+    float:left;
+    width:33%;
 }
-div.right{
-	display:inline;
-	border:solid blue 5px;
-	width:33%;
+
+div#shopContainer div.center {
+    display: inline-block;
+    margin:0 auto;
+    height:100%;
+    width:33%;
+}
+div#shopContainer div.center img{
 	height:100%;
-	float: right;
-	overflow: auto;
+}
+div#shopContainer div.right {
+	height:100%;
+    float:right;
+    width:33%;
 }
 div.right button, div.left button{
 	height: 100%;
