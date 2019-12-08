@@ -262,7 +262,6 @@ div.catCard label{
 	text-align:center;
 }
 
-<<<<<<< HEAD
 /*Question Container*/
 div#questionContainer{
 	clear: both;
@@ -322,7 +321,8 @@ div.right button, div.left button{
 	height: 100%;
 	width: 100%;
 	display: block;
-=======
+
+
 #snackbar {
   visibility: hidden;
   min-width: 250px;
