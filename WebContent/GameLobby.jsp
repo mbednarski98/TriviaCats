@@ -24,7 +24,7 @@
 		<div id="gameLogin">
 			<input id="nameElement" value="<%=username%>" type="text">
 			<button id="sub" type="button" onclick="connectToServer()">CONNECT</button>
-			<input id="readyCheck" type="checkbox" onclick="checkReady()"
+			<input id="readyCheck" type="checkbox" onclick="sendReady()"
 				name="readyCheck"> <label id="readyCheckLabel"
 				for="readyCheck">Ready</label>
 		</div>
@@ -33,7 +33,7 @@
 
 		<div id="questionContainer">
 			<h2 id="questionText"></h2>
-			<div id="answers"></div>
+			<div id="answerList"></div>
 			<button id="submitAnswer" type="button" onclick="submitAnswer()">Submit
 				Answer</button>
 		</div>
@@ -43,6 +43,9 @@
 <script src="./js/client.js"></script>
 <script>
 		var client = new WebSocketClient("ws", "localhost", "8080", "/TriviaCats/trivia/666");
+		init();
+		
+		/*
 		document.getElementById("readyCheck").style.visibility  	 = "hidden";
 		document.getElementById("readyCheckLabel").style.visibility  = "hidden";
 		document.getElementById("questionContainer").style.visibility  = "hidden";
@@ -124,7 +127,7 @@
 					break;
 				}
 			}
-		}
+		}*/
 		
 	</script>
 </html>

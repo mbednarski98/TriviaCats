@@ -80,6 +80,21 @@ class WebSocketClient {
 	
 }
 
+function init() {
+	document.getElementById("readyCheck").style.visibility  	 = "hidden";
+	document.getElementById("readyCheckLabel").style.visibility  = "hidden";
+	document.getElementById("questionContainer").style.visibility  = "hidden";
+}
+
+function connectToServer() {
+	client.connect();
+	document.getElementById("nameElement").style.visibility = "hidden";
+	document.getElementById("sub").style.visibility		  	= "hidden";
+	document.getElementById("readyCheck").style.visibility  = "";
+	document.getElementById("readyCheckLabel").style.visibility  = "";
+	document.getElementById("submitAnswer").style.visibility= "hidden";
+}
+
 //handle player list
 function updatePlayerList(pList) {
 	var playerList = document.getElementById("catCardContainer");
@@ -114,6 +129,9 @@ function integrateQuestionResults(questionResults) {
 
 // handle new questions
 function displayNewQuestion(question) {
+	document.getElementById("questionContainer").style.visibility  = "";
+	document.getElementById("submitAnswer").style.visibility	   = "";
+	
 	var questionText = document.getElementById("questionText");
 	questionText.innerHTML = question.question_text;
 	
@@ -131,9 +149,9 @@ function displayNewQuestion(question) {
 		answerLabel.for = answer.id;
 		answerLabel.innerHTML = question.answers[i];
 		
-		answers.appendChild(answer);
-		answers.appendChild(answerLabel);
-		answers.appendChild(document.createElement("br"));
+		answerList.appendChild(answer);
+		answerList.appendChild(answerLabel);
+		answerList.appendChild(document.createElement("br"));
 	}
 }
 
@@ -160,19 +178,23 @@ function handlePlayerUpdate(playerUpdate) {
 
 // handle if ready	
 function sendReady() {
-	//var readyCheck = document.getElementById("readyCheck");
-	if (true)/*readyCheck.checked)*/ {
+	var readyCheck = document.getElementById("readyCheck");
+	if (readyCheck.checked) {
 		client.send("READY");
+		document.getElementById("readyCheck").style.visibility  	 = "hidden";
+		document.getElementById("readyCheckLabel").style.visibility  = "hidden";
+		document.getElementById("gameLogin").style.visibility  = "hidden";
 	}
 }
 
 // submit answer
 function submitAnswer() {
+	document.getElementById("submitAnswer").style.visibility= "hidden";
 	var answers = document.getElementsByName("qAnswer");
 
 	for (i = 0; i != answers.length; i++) {
 		if (answers[i].checked) {
-			this.send("ANSWER:" + answers[i].value);
+			client.send("ANSWER:" + answers[i].value);
 			break;
 		}
 	}
