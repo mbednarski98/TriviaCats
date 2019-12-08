@@ -15,7 +15,7 @@
 		<jsp:include page="./utils/toolbar.jsp" />
 
 		<main>
-			<div id="roomContainer">
+			<form id="roomContainer">
 				<div class="roomCard">
 					<h3>Room Number: VALUE</h3> <button id="roomButton" type="button" onclick="joinGame()">Join</button>
 					<p>Status: <span>(OPEN/CLOSE)</span></p>
@@ -25,7 +25,7 @@
 					<h3>Cats:</h3>
 					<div id=userNames></div>
 				</div>
-			</div>
+			</form>
 			
 			
 			<div id="roomContainer">
