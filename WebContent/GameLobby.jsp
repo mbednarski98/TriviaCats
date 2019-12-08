@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Cat Trivia - Play Game</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="./css/snackbar.css">
 </head>
 <%
 	int numberOfCats = 4;
@@ -39,7 +40,7 @@
 		</div>
 
 	</main>
-	<div id="snackBar"></div>
+	<div id="snackBar" class="snackbar"></div>
 </body>
 <script src="./js/client.js"></script>
 <script>
