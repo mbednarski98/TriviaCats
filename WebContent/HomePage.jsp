@@ -16,11 +16,11 @@
 
 		<main id="home">
 			<div id="homepageContainer">
+				
 				<img src="./img/cat1.png">
 				<h1>Sign up now!</h1>
-				<h2>
-					<img src="./img/goldfish.png"> 30 Free Goldfish!
-				</h2>
+				<img src="./img/goldfish.png">
+				<h2>30 Free Goldfish!</h2>
 			</div>
 		</main>
 

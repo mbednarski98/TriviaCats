@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="./css/main.css">
-<title>Insert title here</title>
+<title>Shop Page</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -16,10 +16,10 @@
 		<main>
 			<div id="shopContainer">
 				<div class="left">
-					<button>Left</button>
+					<button><img src="./img/leftArrow.png"></button>
 				</div>
 				<div class="right">
-					<button>Right</button>
+					<button><img src="./img/rightArrow.png"></button>
 				</div>
 				<div class="center">
 					<img src="./img/cat1.png"/>

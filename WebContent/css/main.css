@@ -3,7 +3,6 @@
 margin:0;
 padding:0;
 }
-
 /*body*/
 body{
 	/*short-cut order for font is font-style, font-variant, font-weight, font-size/line-height font-family(ies).  Must have minimum of font-size/line-height*/
@@ -78,7 +77,7 @@ form{
 	border: solid #333 5px;
 }
 form img{
-	width: 200px;
+	width: 154px;
 	height: 200px;
 	margin: 10px auto;
 	display: block;
@@ -118,14 +117,19 @@ div#homepageContainer{
 }
 div#homepageContainer img {
 	display: block;
-	height: 25%;
-	margin: 0, auto;
+	height: 33%;
+	margin: 0 auto;
+}
+div#homepageContainer h1{
+	text-align: center;
 }
 div#homepageContainer h2{
-	
+	text-align: center;
 }
 div#homepageContainer h2 img{
-	
+	height: 33px;
+	width: 33px;
+	vertical-align:middle;
 }
 /*login page*/
 form.login{
@@ -297,12 +301,18 @@ div#shopContainer{
 	height:300px;
 	text-align:center;
 }
+div#shopContainer button {
+	background:#FFF8F0;
+	border: solid #FFF8F0 1px;
+}
+div#shopContainer button img {
+	height:100%;
+}
 div#shopContainer div.left {
 	height:100%;
     float:left;
     width:33%;
 }
-
 div#shopContainer div.center {
     display: inline-block;
     margin:0 auto;
