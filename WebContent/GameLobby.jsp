@@ -12,7 +12,7 @@
 	int numberOfCats = 4;
 %>
 <body onload="setTimeout(function() { connectToServer() }, 1)">
-	<%
+	<%/*
 		String username;
 		if (session.getAttribute("username") != null) {
 			username = (String) session.getAttribute("username");
@@ -20,10 +20,10 @@
 			username = "NAME:Tom";
 			session.setAttribute("username", username);
 		}
-	%>
+	*/%>
 	<main>
 		<div id="gameLogin">
-			<input id="nameElement" value="<%=username%>" type="text">
+			<input id="nameElement" value="" type="text">
 			<button id="sub" type="button" onclick="connectToServer()">CONNECT</button>
 			<input id="readyCheck" type="checkbox" onclick="sendReady()"
 				name="readyCheck"> <label id="readyCheckLabel"
@@ -40,7 +40,7 @@
 		</div>
 
 	</main>
-	<div id="snackBar" class="snackbar"></div>
+	<div id="snackBar" class="snackBar"></div>
 </body>
 <script src="./js/client.js"></script>
 <script>
