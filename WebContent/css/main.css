@@ -68,23 +68,6 @@ main{
 	width: 100%;
 	float:left;
 }
-main div#welcome{
-	display:block;
-	width: 260px;
-	height: 260px;
-	margin: 0 auto;
-}
-main div#welcome img{
-	display: block;
-	width: 240px;
-	height: 240px;
-	margin: auto;
-}
-main div#welcome h2 img{
-	display: inline;
-	width: 60px;
-	height: 60px;
-}
 /*Form Base*/
 form{
 	display:block;
@@ -127,6 +110,22 @@ form input[type=text]{
 	background: #fff;
 	padding: 2px;
 	border: 1px solid black;
+}
+/*Homepage*/
+div#homepageContainer{
+	width:100%;
+	height:700px;
+}
+div#homepageContainer img {
+	display: block;
+	height: 25%;
+	margin: 0, auto;
+}
+div#homepageContainer h2{
+	
+}
+div#homepageContainer h2 img{
+	
 }
 /*login page*/
 form.login{
