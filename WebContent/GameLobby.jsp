@@ -39,6 +39,7 @@
 		</div>
 
 	</main>
+	<div id="snackBar"></div>
 </body>
 <script src="./js/client.js"></script>
 <script>
