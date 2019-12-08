@@ -23,7 +23,7 @@
 	</div>
 
 	<div id="userArea" style="float: left;">
-	<ul id="userList">
+	<ul id="playerList">
 	</ul>
 	</div>
 	
@@ -31,7 +31,7 @@
 	
 	<div id="questionDisplay" style="margin: 0 auto;">
 	<h2 id="questionText"></h2>
-	<div id="answers"></div>
+	<div id="answerList"></div>
 	<button id="submitAnswer" type="button" onclick="submitAnswer()">Submit Answer</button>
 	</div>
 	<script src="./js/client.js"></script>

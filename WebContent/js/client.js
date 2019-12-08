@@ -82,13 +82,25 @@ class WebSocketClient {
 
 //handle player list
 function updatePlayerList(pList) {
-	var playerList = document.getElementById("playerList");
+	var playerList = document.getElementById("catCardContainer");
 	playerList.innerHTML = "";
 	
 	for (const [key, value] of Object.entries(pList.player_list)) {
-		var playerListItem = document.createElement("li");
-		playerListItem.innerHTML = value;
-		playerList.appendChild(playerListItem);
+		var catCard = document.createElement("div");
+		//catCard.style.float = "left";
+		catCard.className = "catCard";
+		
+		var catCardImage = new Image();
+		catCardImage.src = 'https://github.com/mbednarski98/TriviaCats/blob/master/WebContent/img/cat1.png?raw=true';
+		catCardImage.style.height = '200px';
+		
+		var catCardUsername = document.createElement("label");
+		catCardUsername.innerHTML = value;
+
+		catCard.appendChild(catCardImage);
+		catCard.appendChild(catCardUsername);
+		
+		playerList.appendChild(catCard);
 	}
 }
 
@@ -102,12 +114,12 @@ function integrateQuestionResults(questionResults) {
 
 // handle new questions
 function displayNewQuestion(question) {
+	var questionText = document.getElementById("questionText");
+	questionText.innerHTML = question.question_text;
+	
 	var answerList = document.getElementById("answerList");
 	answerList.innerHTML = "";
-	
-	var questionText = document.getElementById("questionText");
-	questionText.innerHTML(question.question_text);
-	
+
 	for (i = 0; i != question.answers.length; i++) {
 		var answer = document.createElement("input");
 		answer.id	 = "answer" + i;
