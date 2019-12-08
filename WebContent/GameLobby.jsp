@@ -7,9 +7,6 @@
 <title>Cat Trivia - Play Game</title>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
-<%
-	int numberOfCats = 4;
-%>
 <body onload="setTimeout(function() { connectToServer() }, 1)">
 	<%
 		String username;
@@ -33,7 +30,7 @@
 
 		<div id="questionContainer">
 			<h2 id="questionText"></h2>
-			<div id="answers"></div>
+			<div id="answerlist"></div>
 			<button id="submitAnswer" type="button" onclick="submitAnswer()">Submit
 				Answer</button>
 		</div>
@@ -56,6 +53,7 @@
 			document.getElementById("submitAnswer").style.visibility= "hidden";
 		}
 		
+		
 		function checkReady() {
 			var readyCheck = document.getElementById("readyCheck");
 			if (readyCheck.checked) {
@@ -66,6 +64,7 @@
 			}
 		}
 		
+		/*
 		function updateUsers(userList) {
 			var playerList = document.getElementById("catCardContainer");
 			playerList.innerHTML = "";
@@ -87,6 +86,7 @@
 				playerList.appendChild(catCard);
 			}
 		}
+		
 		
 		function displayQuestion(question) {
 			var answers = document.getElementById("answers");
@@ -125,6 +125,7 @@
 				}
 			}
 		}
+		*/
 		
 	</script>
 </html>
