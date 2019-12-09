@@ -12,6 +12,7 @@ body{
 
 /*wrapper*/
 #wrapper{
+	
 /*width:1024px;*/
 margin: 0 auto;	
 }
@@ -23,15 +24,18 @@ header{
 	border-bottom: 10px solid black;
 	height: 140px;
 }
+
 header img{
 	height:100%;
 }
+
 header h1{
 	display: inline;
 	color: darkgray;
 	font-family: 'Julius Sans One', sans-serif;
 	padding: 0 0 0 10px;
 }
+
 /*navigation*/
 nav ul {
 	list-style-type: none;
@@ -56,10 +60,12 @@ nav li a {
 nav li a:hover {
 	background-color: #111;
 }
+
 /*h2-h6*/
 h2{
 	margin: 15px auto;
 }
+
 /*main*/
 main{
 	
@@ -67,6 +73,7 @@ main{
 	width: 100%;
 	float:left;
 }
+
 /*Form Base*/
 form{
 	display:block;
@@ -76,6 +83,7 @@ form{
 	background: #9F86C0;
 	border: solid #333 5px;
 }
+
 form img{
 	width: 154px;
 	height: 200px;
@@ -87,9 +95,11 @@ form h1{
 	text-align: center;
 	margin: 0 auto;
 }
+
 div.center {
 	text-align:center;
 }
+
 form label{
 	text-align:center;
 	width: 80px;
@@ -104,49 +114,54 @@ form input{
 	margin: 4px;
 }
 
-
 form input[type=text]{
 	background: #fff;
 	padding: 2px;
 	border: 1px solid black;
 }
+
 /*Homepage*/
 div#homepageContainer{
 	width:100%;
 	height:700px;
 }
+
 div#homepageContainer img {
 	display: block;
 	height: 33%;
 	margin: 0 auto;
 }
+
 div#homepageContainer h1{
 	text-align: center;
 }
+
 div#homepageContainer h2{
 	text-align: center;
 }
+
 div#homepageContainer h2 img{
 	height: 33px;
 	width: 33px;
 	vertical-align:middle;
 }
+
 /*login page*/
 form.login{
 	width:220px;	
 }
-
-
 
 /*Register Page*/
 main div#register{
 	width: 100%
 	margin: auto;
 }
+
 main div#register h1{
 	text-align: center;
 	margin-bottom: 40px;
 }
+
 main div#register img{
 	width:200px;
 	height:200px;
@@ -154,27 +169,29 @@ main div#register img{
 	float:right;
 	
 }
+
 form.register{
 	width:400px;
 	margin-left: 60px;
 	float:left;
 	
 }
+
 form.register input,form.register label{
 	width:160px;
 }
+
 form.register input[type=submit]{
 	width:336px;
 	height:40px;
 	margin: 20px;
 }
 
-
-
 /*Dashboard Page*/
 div#roomContainer{
 	
 }
+
 div.roomCard{
 	border: solid black 5px;
 	border-radius: 30px;
@@ -184,9 +201,11 @@ div.roomCard{
 	padding: 15px;
 	float: left;
 }
+
 div.roomCard h3{
 	float: left;
 }
+
 div.roomCard button{
 	margin: 0 0 0 10px;
 	background-color: #9F86C0;
@@ -199,21 +218,25 @@ div.roomCard button{
 main#game{
 	background:#eee;
 }
+
 div.GameScore{
 	diplay:block;
 	width:100%;
 	background:#fff;
 }
+
 div.GameScore span{
 	padding: 6px;
 	font-size: 16px;
 }
+
 form#question{
 	display:block;
 	width:100%;
 	background:#fff;
 	/*background:red;*/ /*- color for debugging*/
 }
+
 form#question input{
 	width:24%;
 	height: 40px;
@@ -225,27 +248,32 @@ form#question input{
 	margin: 10px 2px ;
 
 }
+
 div.player{
 	width: 18%;
 	height: 22%;
 	margin: 1em;
 	float:left;
 }
+
 div.player img{
 	width: 160px;
 	height: 160px;
 	padding: 10px;
 
 }
+
 div.player label{
 	margin: 2px;
 	font-size: 14px;
 }
+
 /*Cat Container*/
 div#catCardContainer{
 	overflow: auto;
 	margin: 0 10px 0 10px;
 }
+
 /*Cat Card*/
 div.catCard{
 	border-radius: 30px;
@@ -255,12 +283,14 @@ div.catCard{
 	width: 232px;
 	float: left;
 }
+
 div.catCard img{
 	display:block;
 	width: 75%;
 	height: 75%;
 	margin: 10px auto;
 }
+
 div.catCard label{
 	display: block;
 	text-align:center;
@@ -274,6 +304,7 @@ div#questionContainer{
 	background: #5E548E; /*Purple Navy*/
 	border: solid #9F86C0 2px; /*lavander*/
 }
+
 div#questionContainer button{
 	background-color: #9F86C0;
 	border-radius: 15px;
@@ -285,48 +316,79 @@ div#questionContainer button{
 div#questionContainer h2{
 	text-align: center;
 }
-div#answers{
+
+div#answerList{
 	background: #9F86C0;
 	border: solid #9F86C0 5px;
 	width: 75%;
 	margin: 0 auto;
 	border-radius: 30px;
 	padding: 15px;
+	display: block;
 }
 
+div#answerList input[type="radio"] {
+	display: block;
+	margin: 0 auto;
+	position: absolute;
+	opacity: 0;
+	width: 0;
+}
 
+div#answerList input[type=radio]+label {
+	font-weight: normal;
+}
+div#answerList input[type=radio]:checked+label {
+	font-weight: bold;
+}
+div#answerList input[type=radio]:focus+label {
+	border: 1px dotted #000;
+}
+
+div#answerList label {
+	display: block;
+	margin: 4px auto;
+	text-align:center;
+}
 
 /*Shop page*/
 div#shopContainer{
 	height:300px;
 	text-align:center;
 }
+
 div#shopContainer button {
 	background:#FFF8F0;
 	border: solid #FFF8F0 1px;
 }
+
 div#shopContainer button img {
 	height:100%;
 }
+
 div#shopContainer div.left {
 	height:100%;
     float:left;
     width:33%;
 }
+
 div#shopContainer div.center {
     display: inline-block;
     margin:0 auto;
     height:100%;
     width:33%;
 }
+
 div#shopContainer div.center img{
 	height:100%;
 }
+
 div#shopContainer div.right {
 	height:100%;
     float:right;
     width:33%;
 }
+
 div.right button, div.left button{
 	height: 100%;
 	width: 100%;

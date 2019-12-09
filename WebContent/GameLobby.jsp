@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%
 	int roomNumber = -1;
+
 	if (request.getMethod().contains("POST")) {
 		roomNumber = Integer.parseInt(request.getParameter("roomNumber"));
 	} else {

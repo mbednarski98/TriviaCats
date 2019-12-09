@@ -49,6 +49,8 @@ class WebSocketClient {
 						displayNewQuestion(ed);
 					} else if (Object.keys(ed)[0] == "player_id") {
 						handlePlayerUpdate(ed);
+					} else if (Object.keys(ed)[0] == "question_results") {
+						integrateQuestionResults(ed.question_results);
 					} else if (Object.keys(ed)[0] == "games") {
 						console.debug(ed.games);
 						setGameList(ed.games);
@@ -102,7 +104,7 @@ function updatePlayerList(pList) {
 		catCardUsername.innerHTML = value;
 
 		var catCardScoreLabel	= document.createElement("label");
-		catCardScoreLabel.id = "scoreLabel"
+		catCardScoreLabel.id = "scoreLabel" + key;
 		catCardScoreLabel.innerHTML = "Score: 0";
 		
 		catCard.appendChild(catCardImage);
@@ -116,8 +118,8 @@ function updatePlayerList(pList) {
 // handle question results
 function integrateQuestionResults(questionResults) {
 	for (const player of  questionResults) {
-		var playerScore = document.getElementById(player.player_id + "score");
-		playerScore.innerHTML = player.points;
+		var playerScore = document.getElementById("scoreLabel" + player.player_id);
+		playerScore.innerHTML = "Score: " + player.points;
 	}
 }
 
@@ -140,12 +142,12 @@ function displayNewQuestion(question) {
 		answer.value = question.answerKeys[i];
 		
 		var answerLabel = document.createElement("label");
-		answerLabel.for = answer.id;
+		answerLabel.htmlFor = answer.id;
 		answerLabel.innerHTML = question.answers[i];
 		
 		answerList.appendChild(answer);
 		answerList.appendChild(answerLabel);
-		answerList.appendChild(document.createElement("br"));
+		//answerList.appendChild(document.createElement("br"));
 	}
 }
 
