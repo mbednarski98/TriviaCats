@@ -23,6 +23,7 @@
 		<jsp:include page="./utils/toolbar.jsp" />
 
 		<main id="gameResults">
+			<h2 style="margin: 0 35%;">Final Results!</h2>
 			<div id="catCardContainer">
 			<% for (QuestionResult qr : gameResults) { %>
 				<div class="catCard">
