@@ -1,10 +1,11 @@
 package triviacats.updateobjects;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class QuestionResults {
+public class QuestionResults implements Iterable<QuestionResult> {
 
-	ArrayList<QuestionResult> question_results;
+	private ArrayList<QuestionResult> question_results ;
 	
 	public QuestionResults() {
 		this.question_results = new ArrayList<>();
@@ -16,5 +17,18 @@ public class QuestionResults {
 	
 	public void addQuestionResult(QuestionResult questionResult) {
 		question_results.add(questionResult);
+	}
+
+	public int getSize() {
+		return this.question_results.size();
+	}
+	
+	public QuestionResult get(int index) {
+		return this.question_results.get(index);
+	}
+	
+	@Override
+	public Iterator<QuestionResult> iterator() {
+		return this.question_results.iterator();
 	}
 }

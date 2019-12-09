@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.google.gson.*" %>
-<%@ page import="triviacats.updateobjects.GameResults" %>
-<%@ page import="triviacats.updateobjects.PlayerResult" %>
+<%@ page import="triviacats.updateobjects.QuestionResults" %>
+<%@ page import="triviacats.updateobjects.QuestionResult" %>
 <!DOCTYPE html>
 <%
 	Gson gson = new Gson();
 	String gameResultsJson = request.getParameter("gameResults");
-	
-	GameResults gameResults = gson.fromJson(gameResultsJson, GameResults.class);
-	
+	QuestionResults gameResults = gson.fromJson(gameResultsJson, QuestionResults.class);
 %>
 <html>
 <head>
@@ -25,7 +23,9 @@
 		<jsp:include page="./utils/toolbar.jsp" />
 
 		<main id="gameResults">
+			<% for (QuestionResult qr : gameResults) { %>
 			
+			<% } %>
 		</main>
 
 	</div>

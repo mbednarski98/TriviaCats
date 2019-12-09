@@ -50,7 +50,7 @@ class WebSocketClient {
 					} else if (Object.keys(ed)[0] == "player_id") {
 						handlePlayerUpdate(ed);
 					} else if (Object.keys(ed)[0] == "question_results") {
-						integrateQuestionResults(ed.question_results);
+						integrateQuestionResults(ed);
 					} else if (Object.keys(ed)[0] == "games") {
 						console.debug(ed.games);
 						setGameList(ed.games);
@@ -120,6 +120,7 @@ function updatePlayerList(pList) {
 // handle question results
 function integrateQuestionResults(questionResults) {
 	lastQuestionResults = questionResults;
+	questionResults = questionResults.question_results;
 	for (const player of  questionResults) {
 		var playerScore = document.getElementById("scoreLabel" + player.player_id);
 		playerScore.innerHTML = "Score: " + player.points;
@@ -170,7 +171,7 @@ function displayNewQuestion(question) {
 			submitAnswer();
 			
 			setTimeout(function() {
-				redirectInputValue.value = lastQuestionResults;
+				redirectInputValue.value = JSON.stringify(lastQuestionResults);
 				document.body.appendChild(redirectForm);
 				redirectForm.submit();
 			}, 500);
