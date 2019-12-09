@@ -23,9 +23,15 @@
 		<jsp:include page="./utils/toolbar.jsp" />
 
 		<main id="gameResults">
+			<div id="catCardContainer">
 			<% for (QuestionResult qr : gameResults) { %>
-			
+				<div class="catCard">
+					<img src="https://github.com/mbednarski98/TriviaCats/blob/master/WebContent/img/cat1.png?raw=true" style="height: 200px;">
+					<label id="nameLabel"><%= qr.getName() %></label>
+					<label id="scoreLabel">Final Score: <%= qr.getPoints() %></label>
+				</div>
 			<% } %>
+			</div>
 		</main>
 
 	</div>

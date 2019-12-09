@@ -15,4 +15,16 @@ public class QuestionResult {
 		this.answered_correctly	= answeredCorrectly;
 		this.points				= p.getScore();
 	}
+	
+	public String getId() {
+		return this.player_id;
+	}
+	
+	public String getName() {
+		return this.player_name;
+	}
+	
+	public int getPoints() {
+		return this.points;
+	}
 }
