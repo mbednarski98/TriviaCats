@@ -85,6 +85,8 @@ class WebSocketClient {
 	
 }
 
+var lastQuestionResults;
+
 //handle player list
 function updatePlayerList(pList) {
 	var playerList = document.getElementById("catCardContainer");
@@ -117,6 +119,7 @@ function updatePlayerList(pList) {
 
 // handle question results
 function integrateQuestionResults(questionResults) {
+	lastQuestionResults = questionResults;
 	for (const player of  questionResults) {
 		var playerScore = document.getElementById("scoreLabel" + player.player_id);
 		playerScore.innerHTML = "Score: " + player.points;
@@ -147,7 +150,31 @@ function displayNewQuestion(question) {
 		
 		answerList.appendChild(answer);
 		answerList.appendChild(answerLabel);
-		//answerList.appendChild(document.createElement("br"));
+	}
+	
+	if (question.question_number == 10) {
+		// TODO: Create an invisible form to submit results to next page
+		
+		var redirectForm = document.createElement("form");
+		redirectForm.id		= "resultsRedirectForm";
+		redirectForm.action = "./GameResults.jsp";
+		redirectForm.method = "POST"
+		
+		var redirectInputValue = document.createElement("input");
+		redirectInputValue.name		= "gameResults";
+		redirectInputValue.type		= "hidden";
+		redirectForm.appendChild(redirectInputValue);
+		
+		var submitAnswerButton = document.getElementById("submitAnswer");
+		submitAnswerButton.onclick = function () {
+			submitAnswer();
+			
+			setTimeout(function() {
+				redirectInputValue.value = lastQuestionResults;
+				document.body.appendChild(redirectForm);
+				redirectForm.submit();
+			}, 500);
+		}
 	}
 }
 
