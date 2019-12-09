@@ -31,7 +31,7 @@ class WebSocketClient {
 			this.webSocket = new WebSocket(this.serverURL);
 			 
 			this.webSocket.onopen = function(event) {
-				this.send("NAME:SandMan");
+				
 			}
 			 
 			this.webSocket.onclose = function(event) {
@@ -49,6 +49,9 @@ class WebSocketClient {
 						displayNewQuestion(ed);
 					} else if (Object.keys(ed)[0] == "player_id") {
 						handlePlayerUpdate(ed);
+					} else if (Object.keys(ed)[0] == "games") {
+						console.debug(ed.games);
+						setGameList(ed.games);
 					}
 				}
 			}
@@ -80,21 +83,6 @@ class WebSocketClient {
 	
 }
 
-function init() {
-	document.getElementById("readyCheck").style.visibility  	 = "hidden";
-	document.getElementById("readyCheckLabel").style.visibility  = "hidden";
-	document.getElementById("questionContainer").style.visibility  = "hidden";
-}
-
-function connectToServer() {
-	client.connect();
-	document.getElementById("nameElement").style.visibility = "hidden";
-	document.getElementById("sub").style.visibility		  	= "hidden";
-	document.getElementById("readyCheck").style.visibility  = "";
-	document.getElementById("readyCheckLabel").style.visibility  = "";
-	document.getElementById("submitAnswer").style.visibility= "hidden";
-}
-
 //handle player list
 function updatePlayerList(pList) {
 	var playerList = document.getElementById("catCardContainer");
@@ -104,6 +92,7 @@ function updatePlayerList(pList) {
 		var catCard = document.createElement("div");
 		//catCard.style.float = "left";
 		catCard.className = "catCard";
+		catCard.name = value;
 		
 		var catCardImage = new Image();
 		catCardImage.src = 'https://github.com/mbednarski98/TriviaCats/blob/master/WebContent/img/cat1.png?raw=true';
@@ -112,8 +101,13 @@ function updatePlayerList(pList) {
 		var catCardUsername = document.createElement("label");
 		catCardUsername.innerHTML = value;
 
+		var catCardScoreLabel	= document.createElement("label");
+		catCardScoreLabel.id = "scoreLabel"
+		catCardScoreLabel.innerHTML = "Score: 0";
+		
 		catCard.appendChild(catCardImage);
 		catCard.appendChild(catCardUsername);
+		catCard.appendChild(catCardScoreLabel);
 		
 		playerList.appendChild(catCard);
 	}
@@ -166,7 +160,9 @@ function handlePlayerUpdate(playerUpdate) {
 	} else if (playerUpdate.player_state == "left_game") {
 		message = playerUpdate.player_name + " left the game!";
 	} else if (playerUpdate.player_state == "answered") {
-		message = playerUpdate.player_name + " has answered the question";
+		message = playerUpdate.player_name + " has answered the question.";
+	} else if (playerUpdate.player_state == "ready") {
+		message = playerUpdate.player_name + " is ready!";
 	}
 	
 	snackBar.innerHTML = message;
@@ -198,4 +194,8 @@ function submitAnswer() {
 			break;
 		}
 	}
+}
+
+function sendName(name) {
+	client.send("NAME:" + name);
 }

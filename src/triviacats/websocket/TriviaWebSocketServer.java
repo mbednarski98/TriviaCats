@@ -13,8 +13,12 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
+
+import triviacats.updateobjects.GameList;
 import triviacats.updateobjects.QuestionResults;
 
+@ApplicationScoped
 @ServerEndpoint("/trivia/{roomnumber}")
 public class TriviaWebSocketServer {	
 	
@@ -22,9 +26,34 @@ public class TriviaWebSocketServer {
 	@Inject
 	private GameHandler gameHandler;
 	
+	private void sendGameList(Session session) {
+		GameList gameList = new GameList(this.gameHandler.getAllGames());
+		
+		Gson gson = new Gson();
+		
+		try {
+			session.getBasicRemote().sendText(gson.toJson(gameList));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				session.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	// actions to be performs on the connection of a new websocket client
 	@OnOpen
 	public void onOpen(Session session, @PathParam("roomnumber") final String roomNumber) {
+		if (roomNumber.contains("GAMELISTREQUEST")) {
+			this.sendGameList(session);
+			return;
+		}
+		
 		int rn = -1;
 		try {
 			rn = Integer.parseInt(roomNumber);
@@ -40,10 +69,10 @@ public class TriviaWebSocketServer {
 
 		if (!this.gameHandler.roomExists(rn)) {
 			this.gameHandler.newGame(session, rn);
-			this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
+			//this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
 		} else if (!this.gameHandler.findGame(rn).hasStarted()) {
 			this.gameHandler.addPlayerToGame(rn, session);
-			this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
+			//this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
 		} else {
 			this.closeSession(session, "ROOM CLOSED");
 			return;
@@ -54,11 +83,16 @@ public class TriviaWebSocketServer {
 	@OnClose
 	public void onClose(Session session) {
 		int roomNumber = this.gameHandler.findPlayer(session.getId());
+		Game g = this.gameHandler.findGame(roomNumber);
 		
 		if (this.gameHandler.findGame(roomNumber) != null) {
 			this.gameHandler.sendPlayerUpdate(session.getId(), "left_game");
 			this.gameHandler.findGame(roomNumber).removePlayer(session.getId());
 			this.gameHandler.sendPlayerList(roomNumber);
+			
+			if (g.getNumOfPlayers() == 0) {
+				this.gameHandler.removeGame(roomNumber);
+			}
 		}
 	}
 	
@@ -92,6 +126,7 @@ public class TriviaWebSocketServer {
 		} else if (message.contains("NAME:")) {
 			String name = message.split(":")[1];
 			this.gameHandler.findGame(roomNumber).getPlayer(session.getId()).setName(name);
+			this.gameHandler.sendPlayerUpdate(session.getId(), "joined_game");
 			this.gameHandler.sendPlayerList(roomNumber);
 		} else {
 			

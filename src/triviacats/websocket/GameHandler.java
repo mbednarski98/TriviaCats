@@ -43,6 +43,10 @@ public class GameHandler {
 		return null;
 	}
 	
+	public ArrayList<Game> getAllGames() {
+		return this.games;
+	}
+	
 	// takes in a session id, returns the corresponding room number
 	public int findPlayer(String sessionID) {
 		for (Game g : games) {
@@ -73,6 +77,7 @@ public class GameHandler {
 	// sets the specified player status to ready
 	public void setPlayerReady(String sessionID) {
 		this.findGame(this.findPlayer(sessionID)).getPlayer(sessionID).setReadyStatus(true);
+		this.sendPlayerUpdate(sessionID, "ready");
 	}
 	
 	// starts a game if all players are ready, returns true if game started, false if it has not
